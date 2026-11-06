@@ -66,3 +66,4 @@ A seção "Novos aprendizados" nasceu do **Projeto específico 1 (Missouri Resid
 3. Conferir as primeiras screenshots **antes** de detalhar móveis: exposição e escala do entorno são os erros mais visíveis.
 4. Manter vizinhos baixos perto do terreno, ou o prédio do cliente perde protagonismo.
 5. Em teste headless, tudo que anima deve usar relógio real, não número de quadros.
+- A descrição e os tópicos do repositório não podem ser alterados pelo Claude (o acesso ao GitHub desta sessão não permite mudar configurações): o usuário altera em Settings → General.
