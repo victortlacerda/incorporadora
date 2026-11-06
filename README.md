@@ -2,7 +2,7 @@
 
 Sistema para **apresentar e vender** apartamentos de um empreendimento com uma maquete 3D navegável (sol real, noite, drone, tour virtual guiado) e um **CRM** simples (clientes, funil, espelho de vendas, relatórios PDF/Word/Excel, backup .json).
 
-Empreendimento piloto: **Missouri Residencial** — Costa Lacerda Empreendimentos Imobiliários — Rua Ceará, 361, Centro, Divinópolis/MG.
+Empreendimento piloto: **Residencial** — Empreendimentos Imobiliários.
 
 ## Como usar (sem instalar nada)
 
