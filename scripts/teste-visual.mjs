@@ -36,11 +36,11 @@ if (cenario === 'basico' || cenario === 'celular') {
   await passo(`__ui.definirIsolado(null); __ui.app3d.vista('bairro')`, 3500, '08-bairro');
 }
 if (cenario === 'tour') {
-  await passo(`__ui.app3d.iniciarTour('502')`, 3000, '10-tour-sala');
-  for (let i = 1; i < 8; i++) await passo(`__ui.app3d.tourAtivo().ir(${i})`, 1500, `11-tour-${i}`);
+  await passo(`__ui.iniciarTour('502')`, 3000, '10-tour-sala');
+  for (let i = 1; i < 8; i++) await passo(`__ui.app3d.tourAtivo().ir(${i})`, 2500, `11-tour-${i}`);
   await passo(`__ui.definirHora(19.5); __ui.app3d.tourAtivo().ir(0)`, 1500, '12-tour-noite');
-  await passo(`__ui.app3d.tourAtivo().encerrar(); __ui.definirHora(10.5); __ui.app3d.iniciarTour('901')`, 3000, '13-tour-cob');
-  for (let i = 1; i < 12; i++) { const n = await pg.evaluate(`__ui.app3d.tourAtivo().total()`); if (i >= n) break; await passo(`__ui.app3d.tourAtivo().ir(${i})`, 1500, `14-cob-${i}`); }
+  await passo(`__ui.app3d.tourAtivo().encerrar(); __ui.definirHora(10.5); __ui.iniciarTour('901')`, 3000, '13-tour-cob');
+  for (let i = 1; i < 12; i++) { const n = await pg.evaluate(`__ui.app3d.tourAtivo().total()`); if (i >= n) break; await passo(`__ui.app3d.tourAtivo().ir(${i})`, 2500, `14-cob-${i}`); }
 }
 if (cenario === 'gerente') {
   await pg.evaluate(`(() => { const e = __ui.est; e.dados.config.pinHash = null; })()`);

@@ -587,11 +587,11 @@ export function iniciarUI(emp: Empreendimento) {
 
   // ---------- backup ----------
   function exportar() {
+    est.marcarBackup();
     const blob = new Blob([exportarJSON(est.dados)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob); a.download = nomeArquivoBackup(emp);
     document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-    est.marcarBackup();
     toast('Backup exportado. Guarde o arquivo em local seguro.', 'ok');
   }
   $<HTMLInputElement>('#arquivo-json').addEventListener('change', async (e) => {
@@ -668,6 +668,7 @@ export function iniciarUI(emp: Empreendimento) {
   }
   function definirIsolado(n: number | null) {
     isolado = n;
+    if (n != null) { droneOn = false; marcarDock(); }
     app3d.isolarPavimento(n);
     atualizarRotulos();
     if (n != null) toast(`${pavimentoRotulo(emp, n)} — toque numa unidade.`);
@@ -782,5 +783,5 @@ export function iniciarUI(emp: Empreendimento) {
       }
     }, 30);
   });
-  (window as any).__ui = { est, abrir, fechar, selecionarUnidade, definirHora, definirIsolado, get app3d() { return app3d; } };
+  (window as any).__ui = { est, abrir, fechar, selecionarUnidade, definirHora, definirIsolado, iniciarTour, get app3d() { return app3d; } };
 }

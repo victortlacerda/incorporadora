@@ -1,7 +1,7 @@
 name: Publicar no GitHub Pages
+# Desligado por padrão (decisão D10 do roadmap). Para publicar: Settings → Pages → Source: GitHub Actions,
+# depois Actions → "Publicar no GitHub Pages" → Run workflow. Para publicar a cada envio, acrescente "push: branches: [main]".
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read

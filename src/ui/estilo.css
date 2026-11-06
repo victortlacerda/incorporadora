@@ -253,3 +253,13 @@ button { cursor: pointer; }
   .faixa-exemplo { top: auto; bottom: 140px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.com-painel .menu-topo .rotulo { display: none; }
+.form input, .form select, .form textarea { width: 100%; min-width: 0; }
+.form .duas > *, .grade > * { min-width: 0; }
+.form .check input { width: 20px; }
+.painel-corpo { overflow-x: hidden; }
+@media (max-width: 760px) {
+  .bussola { top: 128px; width: 44px; height: 44px; }
+  .legenda { font-size: 11px; padding: 6px 8px; gap: 2px; }
+  .legenda .noite { display: none; }
+}

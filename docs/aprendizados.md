@@ -42,6 +42,11 @@ Este arquivo é a memória do projeto. Antes de começar um empreendimento novo,
 | Painel cobria o menu do topo e cortava o dock | Posições fixas | `.com-painel` desloca topo e dock |
 | Fachada lavada por luz laranja à noite | PointLights de rua fortes demais | intensidade 14, bloom 0,6 |
 | `import 'playwright'` falha em script .mjs | Pacote global só via require | `createRequire(import.meta.url)('playwright')` |
+| Tour à noite totalmente estourado | Bloom + exposição noturna + luzes internas | Sem bloom no tour, exposição fixa 0,55, luzes internas moderadas |
+| Interior azulado/lavado de dia | Reflexo do céu (environment) iluminando tudo por igual | `envMult` 0,35 durante o tour; paredes em tom quente |
+| "m²" saía "m" no PDF | Fontes padrão do jsPDF sem "²" | Trocar "²" por "2" só no PDF |
+| Campos do formulário vazando o painel | `select` com largura mínima intrínseca no grid | `width:100%; min-width:0` nos campos e filhos do grid |
+| Erro repetido após sair da abertura | Temporizador procurava elemento já removido | Usar variável `iniciado` em vez de consultar o DOM |
 | Ambientes de tipologias "espelhadas" no lugar errado | Retângulos dos ambientes são absolutos | Cada posição de unidade precisa de tipologia própria (ou `base` com mesma posição) |
 
 ### O que o cliente não gostou

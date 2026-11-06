@@ -29,16 +29,20 @@ const kpis = (r: Relatorio): [string, string][] => [
 ];
 
 // ---------------- PDF ----------------
-export async function gerarPDF(r: Relatorio, cor: string, logo: string | null, imagem3d: string | null): Promise<Blob> {
+const semSobrescrito = (x: unknown): any => (typeof x === 'string' ? x.replace(/²/g, '2') : Array.isArray(x) ? x.map(semSobrescrito) : x);
+
+export async function gerarPDF(r0: Relatorio, cor: string, logo: string | null, imagem3d: string | null): Promise<Blob> {
+  const r: Relatorio = JSON.parse(JSON.stringify(r0), (_k, v) => semSobrescrito(v));
   const { jsPDF } = await import('jspdf');
   const autoTable = (await import('jspdf-autotable')).default;
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+  const at = (d: any, o: any) => autoTable(d, { ...o, head: semSobrescrito(o.head), body: semSobrescrito(o.body) });
   const [cr, cg, cb] = hexRgb(cor);
   const W = doc.internal.pageSize.getWidth();
   doc.setFillColor(cr, cg, cb); doc.rect(0, 0, W, 28, 'F');
   doc.setTextColor(255); doc.setFontSize(18); doc.text(`${r.titulo} — ${r.empreendimento}`, 14, 13);
   doc.setFontSize(9); doc.text(`${r.incorporadora} · ${r.endereco}`, 14, 20); doc.text(`Gerado em ${r.geradoEm}`, 14, 25);
-  if (logo) try { doc.addImage(logo, 'PNG', W - 30, 3, 22, 20); } catch { /* sem logo */ }
+  if (logo) try { doc.setFillColor(255, 255, 255); doc.roundedRect(W - 32, 2.5, 26, 23, 2, 2, 'F'); doc.addImage(logo, 'PNG', W - 30, 4, 22, 20); } catch { /* sem logo */ }
   doc.setTextColor(30);
   let y = 36;
   if (r.exemplo) { doc.setTextColor(180, 80, 0); doc.setFontSize(9); doc.text('ATENÇÃO: relatório com DADOS DE EXEMPLO (demonstração).', 14, y); doc.setTextColor(30); y += 6; }
@@ -49,13 +53,13 @@ export async function gerarPDF(r: Relatorio, cor: string, logo: string | null, i
   k.forEach(([t, v], i) => {
     const x = 14 + (i % 4) * colW, yy = y + Math.floor(i / 4) * 16;
     doc.setDrawColor(220); doc.roundedRect(x, yy, colW - 3, 13, 2, 2);
-    doc.setTextColor(110); doc.text(t, x + 3, yy + 5);
-    doc.setTextColor(20); doc.setFontSize(11); doc.text(v, x + 3, yy + 10.5); doc.setFontSize(8);
+    doc.setTextColor(110); doc.text(semSobrescrito(t), x + 3, yy + 5);
+    doc.setTextColor(20); doc.setFontSize(11); doc.text(semSobrescrito(v), x + 3, yy + 10.5); doc.setFontSize(8);
   });
   y += 36;
   const cab = { fillColor: [cr, cg, cb] as [number, number, number], textColor: 255, fontStyle: 'bold' as const };
-  autoTable(doc, { startY: y, head: [['Situação', 'Unidades', '%', 'Valor']], body: r.porStatus.map((s) => [s.rotulo, s.qtd, pct(s.perc), brl(s.valor)]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
-  autoTable(doc, { head: [['Tipologia', 'Área', 'Unid.', 'Vendidas', 'Disponíveis', 'Valor vendido']], body: r.porTipologia.map((t) => [t.nome, m2(t.area), t.qtd, t.vendidas, t.disponiveis, brl(t.valorVendido)]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
+  at(doc, { startY: y, head: [['Situação', 'Unidades', '%', 'Valor']], body: r.porStatus.map((s) => [s.rotulo, s.qtd, pct(s.perc), brl(s.valor)]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
+  at(doc, { head: [['Tipologia', 'Área', 'Unid.', 'Vendidas', 'Disponíveis', 'Valor vendido']], body: r.porTipologia.map((t) => [t.nome, m2(t.area), t.qtd, t.vendidas, t.disponiveis, brl(t.valorVendido)]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
   // espelho de vendas
   doc.addPage();
   doc.setFontSize(13); doc.text('Espelho de vendas', 14, 16);
@@ -71,7 +75,7 @@ export async function gerarPDF(r: Relatorio, cor: string, logo: string | null, i
     ey += 11;
   }
   doc.setTextColor(30);
-  autoTable(doc, {
+  at(doc, {
     startY: ey + 4,
     head: [['Unid.', 'Pav.', 'Tipologia', 'Área', 'Situação', 'Preço tabela', 'R$/m²', 'Cliente', 'Data venda', 'Valor venda']],
     body: r.unidades.map((u) => [u.id, u.pavimento, u.tipologia, m2(u.area), u.statusRotulo, brl(u.preco), u.precoM2 ? brl(u.precoM2) : '—', u.cliente, u.vendaData, u.vendaValor != null ? brl(u.vendaValor) : '']),
@@ -79,10 +83,10 @@ export async function gerarPDF(r: Relatorio, cor: string, logo: string | null, i
   });
   doc.addPage();
   doc.setFontSize(13); doc.text('Clientes e funil de vendas', 14, 16);
-  autoTable(doc, { startY: 22, head: [['Etapa do funil', 'Clientes']], body: r.funil.map((f) => [f.etapa, f.qtd]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: W / 2 + 4 } });
-  autoTable(doc, { startY: 22, head: [['Origem', 'Clientes', 'Vendas']], body: r.origens.map((o) => [o.origem, o.qtd, o.vendas]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: W / 2 + 2, right: 14 } });
-  autoTable(doc, { head: [['Corretor', 'Vendas', 'Valor vendido', 'Negociações ativas']], body: r.corretores.map((c) => [c.corretor, c.vendas, brl(c.valor), c.ativos]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
-  if (r.perdas.length) autoTable(doc, { head: [['Cliente perdido', 'Motivo']], body: r.perdas.map((p) => [p.cliente, p.motivo]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
+  at(doc, { startY: 22, head: [['Etapa do funil', 'Clientes']], body: r.funil.map((f) => [f.etapa, f.qtd]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: W / 2 + 4 } });
+  at(doc, { startY: 22, head: [['Origem', 'Clientes', 'Vendas']], body: r.origens.map((o) => [o.origem, o.qtd, o.vendas]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: W / 2 + 2, right: 14 } });
+  at(doc, { head: [['Corretor', 'Vendas', 'Valor vendido', 'Negociações ativas']], body: r.corretores.map((c) => [c.corretor, c.vendas, brl(c.valor), c.ativos]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
+  if (r.perdas.length) at(doc, { head: [['Cliente perdido', 'Motivo']], body: r.perdas.map((p) => [p.cliente, p.motivo]), headStyles: cab, styles: { fontSize: 8 }, margin: { left: 14, right: 14 } });
   const n = doc.getNumberOfPages();
   for (let p = 1; p <= n; p++) { doc.setPage(p); doc.setFontSize(7); doc.setTextColor(140); doc.text(`${r.empreendimento} · página ${p} de ${n}`, 14, 290); }
   return doc.output('blob');

@@ -186,6 +186,13 @@
 - Narração em áudio do tour (gravada pelo corretor)
 - Realidade aumentada no celular (maquete sobre a mesa)
 
+## 6.1 O que foi verificado nesta rodada (e o que não)
+
+- ✅ 13 testes automáticos das regras (funil, reservas, PIN, backup, sol, relatório, validação do empreendimento).
+- ✅ Arquivo único aberto por `file://` num Chrome sem tela: abertura, vista geral, foco na unidade, rua, noite, espelho, disponibilidade, corte por pavimento, bairro, tour (apto 502 e Cobertura 1, incluindo 2º piso), modo gerente, CRM, relatórios PDF/Word/Excel baixados e conferidos, backup exportado, layout de celular (390×844).
+- ⚠️ **Não verificado:** fluidez (fps) no computador do plantão — o teste roda com placa de vídeo simulada, muito mais lenta que um PC real. Se ficar pesado, a qualidade pode ser reduzida (opção prevista).
+- ⚠️ Medidas dos cômodos do tour e ritmo das janelas da fachada são aproximados (folder sem cotas completas).
+
 ## 7. Riscos e cuidados
 
 | Risco | Cuidado |

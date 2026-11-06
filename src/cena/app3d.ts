@@ -249,7 +249,8 @@ export function criarApp3D(o: Opcoes3D): App3D {
     (scene.children.find((c) => (c as any).isSky) as any)?.material.uniforms.time && ((scene.children.find((c) => (c as any).isSky) as any).material.uniforms.time.value += dt);
     acumuladoEnv += dt;
     if (acumuladoEnv > 0.25) { acumuladoEnv = 0; ceu.atualizarAmbiente(); }
-    bloom.enabled = q !== 'baixa' && ceu.noite > 0.05;
+    bloom.enabled = !tour && q !== 'baixa' && ceu.noite > 0.05;
+    if (tour) renderer.toneMappingExposure = 0.55;
     bloom.strength = 0.6 * ceu.noite;
     atualizarRotulos();
     composer.render(dt);
@@ -319,6 +320,7 @@ export function criarApp3D(o: Opcoes3D): App3D {
           controls.enabled = true;
           camera.fov = 45; camera.updateProjectionMatrix();
           camera.position.copy(salvo.pos); controls.target.copy(salvo.alvo);
+          api.definirHorario(estadoHora.data, estadoHora.hora);
           o.aoFimTour?.();
         },
       });

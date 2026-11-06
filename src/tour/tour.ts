@@ -61,10 +61,12 @@ export function criarTour(c: Ctx): Tour {
     grupo.add(m.grupo);
     montados.push({ a: ambiente, nivel, m });
   }
-  const ambiente = new THREE.AmbientLight('#fff1e0', 0.25);
+  const ambiente = new THREE.AmbientLight('#fff1e0', 0.06);
   grupo.add(ambiente);
   c.scene.add(grupo);
   c.predio.torre.visible = false;
+  c.scene.userData.envMult = 0.35;
+  c.scene.environmentIntensity *= 0.35;
   const fovOriginal = camera.fov;
   camera.fov = 68; camera.updateProjectionMatrix();
 
@@ -180,11 +182,16 @@ export function criarTour(c: Ctx): Tour {
   window.addEventListener('keydown', kd);
 
   let encerrado = false;
+  let ultimo = 0;
   const api: Tour = {
     indice: () => i,
     total: () => montados.length,
     ir,
-    atualizar(dt) {
+    atualizar(dtQuadro) {
+      // relógio real (o fade e a visita guiada não podem depender do fps)
+      const agora = performance.now();
+      const dt = Math.min(0.5, (agora - (ultimo || agora)) / 1000) || dtQuadro;
+      ultimo = agora;
       if (transicao > 0) {
         transicao += dt / 0.35;
         fade.style.opacity = String(Math.min(1, transicao));
@@ -200,8 +207,8 @@ export function criarTour(c: Ctx): Tour {
       olhar();
     },
     aplicarNoite(f) {
-      for (const x of montados) for (const p of x.m.luzes) p.intensity = p.userData.base * (0.6 + 1.6 * f);
-      ambiente.intensity = 0.25 + 0.1 * f;
+      for (const x of montados) for (const p of x.m.luzes) p.intensity = p.userData.base * (0.35 + 0.45 * f);
+      ambiente.intensity = 0.06 + 0.06 * f;
     },
     encerrar() {
       if (encerrado) return;
@@ -216,6 +223,8 @@ export function criarTour(c: Ctx): Tour {
       grupo.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh) m.geometry.dispose(); });
       Object.values(M).forEach((m) => m.dispose());
       c.predio.torre.visible = true;
+      c.scene.environmentIntensity /= 0.35;
+      c.scene.userData.envMult = 1;
       camera.fov = fovOriginal; camera.updateProjectionMatrix();
       c.aoEncerrar();
     },

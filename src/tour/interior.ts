@@ -15,9 +15,9 @@ export function materiaisInterior() {
     porcExt: std({ map: texPorcelanato('#cfc8bc'), roughness: 0.6 }),
     laminado: std({ map: lam, color: '#d79a6a', roughness: 0.55 }),
     deck: std({ map: texMadeira(true), color: '#b89c7c', roughness: 0.8 }),
-    parede: std({ color: '#ece6dc', roughness: 0.92 }),
+    parede: std({ color: '#f1e3cf', roughness: 0.92 }),
     paredeBanho: std({ map: texMarmore('#e8e3da', '150,140,128'), roughness: 0.35 }),
-    teto: std({ color: '#f6f4ef', roughness: 0.95 }),
+    teto: std({ color: '#f6f1e8', roughness: 0.95, emissive: '#f3e6d2', emissiveIntensity: 0.18 }),
     madeiraClara: std({ map: texMadeira(true), roughness: 0.5 }),
     madeiraEscura: std({ map: texMadeira(false), color: '#9a6a4a', roughness: 0.5 }),
     ripado: std({ map: texRipado(), roughness: 0.6 }),
@@ -192,6 +192,9 @@ export function montarAmbiente(a: Ambiente, y: number, externos: Segmento[], M: 
     loc(u - 0.24, u + 0.24, 0.42, 0.5, v - 0.24, v + 0.24, mat);
     loc(u - 0.22, u + 0.22, 0, 0.42, v - 0.22, v - 0.19, M.dourado);
     loc(u - 0.22, u + 0.22, 0, 0.42, v + 0.19, v + 0.22, M.dourado);
+    // encosto do lado de fora (afastado da mesa)
+    const fora = v > V / 2 ? 0.2 : -0.24;
+    loc(u - 0.22, u + 0.22, 0.5, 0.92, v + fora, v + fora + 0.04, mat);
   };
   // v=0 fica do lado "z0" (se longoX) ou "x0". Lado da janela principal em coordenadas locais:
   const vJanelaAlto = ladoExtPrincipal ? (longoX ? ladoExtPrincipal === 'z1' : ladoExtPrincipal === 'x1') : true;
@@ -286,7 +289,7 @@ export function montarAmbiente(a: Ambiente, y: number, externos: Segmento[], M: 
           loc(uA0, uA1, 0, PE - 0.05, vArm, vArm + 0.6, a.tipo === 'suite' ? M.bronze : M.laca);
         }
       }
-      if (a.tipo === 'suite') loc(uC + 0.3, uC + 1.4, 1.35, 2.0, vc - 0.5, vc + 0.5, M.quadro2);
+      if (a.tipo === 'suite') loc(uC + 0.065, uC + 0.09, 1.4, 2.05, vc - 0.55, vc + 0.55, M.quadro2);
       luz(cx, yp + PE - 0.3, cz, 7);
       break;
     }
@@ -379,6 +382,7 @@ export function montarAmbiente(a: Ambiente, y: number, externos: Segmento[], M: 
     olhar = new THREE.Vector3(x1 - 0.2, yp + 1.2, z1 - 0.2);
   }
   if (descoberto) pos.y = yp + 1.75;
+  if (molhado) { olhar.y = yp + 0.95; pos.y = yp + 1.65; }
   return { grupo, vista: { pos, olhar }, luzes };
 }
 

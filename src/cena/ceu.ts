@@ -94,7 +94,7 @@ export function criarCeu(scene: THREE.Scene, renderer: THREE.WebGLRenderer, emp:
       mEst.opacity = noite;
       const neb = new THREE.Color('#b9c6d3').lerp(new THREE.Color('#e9b98f'), (1 - THREE.MathUtils.smoothstep(e, 0, 14)) * dia).lerp(new THREE.Color('#0a1222'), noite);
       (scene.fog as THREE.Fog).color.copy(neb);
-      scene.environmentIntensity = 0.08 + 0.42 * dia;
+      scene.environmentIntensity = (0.08 + 0.42 * dia) * (scene.userData.envMult ?? 1);
       renderer.toneMappingExposure = 0.5 + 0.05 * dia + 0.35 * noite;
       return { pos: p, noite };
     },
