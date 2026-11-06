@@ -7,7 +7,7 @@ import { mkdirSync } from 'node:fs';
 const saida = process.argv[2] || 'tmp-telas';
 const cenario = process.argv[3] || 'basico';
 mkdirSync(saida, { recursive: true });
-const arquivo = 'file://' + resolve('dist/missouri-apresentacao-3d.html');
+const arquivo = 'file://' + resolve(`dist/${process.env.EMP || 'padrao'}-apresentacao-3d.html`);
 const navegador = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--allow-file-access-from-files'] });
 const celular = cenario === 'celular';
 const ctx = await navegador.newContext(celular ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true } : { viewport: { width: 1440, height: 860 }, deviceScaleFactor: 1, acceptDownloads: true });

@@ -1,12 +1,14 @@
 {
   "name": "incorporadora-3d",
   "version": "0.1.0",
-  "description": "Sistema de vendas 3D para incorporadoras (CRM + maquete interativa)",
+  "description": "Plataforma de apresentação 3D e CRM de vendas para incorporadoras (maquete navegável, sol real, tour virtual, espelho de vendas, relatórios).",
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/pos-build.mjs",
     "test": "node --test tests/*.test.ts",
-    "check": "tsc --noEmit -p ."
+    "check": "tsc --noEmit -p .",
+    "build:todos": "node scripts/build-todos.mjs",
+    "build:missouri": "EMP=missouri npm run build"
   },
   "repository": {
     "type": "git",

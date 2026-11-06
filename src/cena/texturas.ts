@@ -240,7 +240,7 @@ export function texTecido(cor: string): THREE.Texture {
   return finalizar(k, c);
 }
 
-/** Letreiro "MISSOURI Residencial" etc. Fundo transparente; usado com emissiveMap para acender à noite. */
+/** Letreiro da fachada (nome + subtítulo do empreendimento). Fundo transparente; usado com emissiveMap para acender à noite. */
 export function texLetreiro(titulo: string, subtitulo: string, fonteAss: string): THREE.Texture {
   const k = 'letr' + titulo;
   if (cache.has(k)) return cache.get(k)!;

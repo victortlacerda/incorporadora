@@ -90,6 +90,7 @@ export function criarTour(c: Ctx): Tour {
     <div class="tour-fade"></div>
     <div class="tour-lightbox" hidden><button class="btn-ico" data-t="fechar-img" aria-label="Fechar imagem">✕</button><img alt=""><p></p><div class="tour-lb-nav"><button class="btn-ico" data-t="img-ant" aria-label="Imagem anterior">‹</button><button class="btn-ico" data-t="img-prox" aria-label="Próxima imagem">›</button></div></div>`;
   c.container.appendChild(ui);
+  if (!t.imagens.some((n) => imagem(n))) (ui.querySelector('[data-t="img"]') as HTMLElement).hidden = true;
   const chips = ui.querySelector('.tour-chips')!;
   chips.innerHTML = montados.map((x, i) => `<button class="chip" data-i="${i}">${esc(x.a.nome)}</button>`).join('');
   const legenda = ui.querySelector('.tour-legenda') as HTMLElement;

@@ -9,16 +9,10 @@ import { posicaoSol, instanteLocal, facesExternas, resumoSolarUnidade, azimuteDo
 import { addDias, diffDias, esc, linkSeguro, sha256 } from '../src/core/util.ts';
 import { montarRelatorio } from '../src/relatorios/dados.ts';
 
-const emp: Empreendimento = JSON.parse(readFileSync(new URL('../empreendimentos/missouri/empreendimento.json', import.meta.url), 'utf8'));
+// Regras testadas sobre o PROJETO PADRÃO (genérico). Fatos de cada projeto específico ficam em tests/projetos.test.ts.
+const emp: Empreendimento = JSON.parse(readFileSync(new URL('../projeto-padrao/empreendimento.json', import.meta.url), 'utf8'));
 const HOJE = '2026-11-06';
 
-test('empreendimento Missouri: 24 unidades válidas e coerentes com o folder', () => {
-  assert.deepEqual(validarEmpreendimento(emp), []);
-  assert.equal(emp.unidades.length, 24);
-  const area = (id: string) => emp.unidades.find((u) => u.id === id)!.areaPrivativa;
-  assert.equal(area('101'), 114); assert.equal(area('203'), 102); assert.equal(area('103'), 104); assert.equal(area('802'), 108);
-  for (const u of emp.unidades) assert.ok(ambientesDaUnidade(emp, u).length >= 5, `tour da ${u.id}`);
-});
 
 test('datas: diffDias/addDias estáveis', () => {
   assert.equal(diffDias('2026-02-27', '2026-03-01'), 2);
@@ -37,33 +31,7 @@ test('esc e linkSeguro', () => {
   assert.ok(linkSeguro('https://drive.google.com/x'));
 });
 
-test('sol: meio-dia de verão em Divinópolis quase a pino; inverno mais baixo e ao norte', () => {
-  const g = emp.geo;
-  let maxV = -90, maxI = -90, azI = 0;
-  for (let h = 10; h <= 14; h += 0.05) {
-    const v = posicaoSol(instanteLocal('2026-12-21', h, g.fusoHoras), g.lat, g.lon);
-    const i = posicaoSol(instanteLocal('2026-06-21', h, g.fusoHoras), g.lat, g.lon);
-    maxV = Math.max(maxV, v.elevacao);
-    if (i.elevacao > maxI) { maxI = i.elevacao; azI = i.azimute; }
-  }
-  assert.ok(maxV > 85 && maxV < 90, `verão ${maxV}`);
-  assert.ok(Math.abs(maxI - (90 - 20.15 - 23.44)) < 1, `inverno ${maxI}`);
-  assert.ok(azI < 10 || azI > 350, `azimute inverno ${azI}`);
-  const nascer = posicaoSol(instanteLocal('2026-03-20', 6.2, g.fusoHoras), g.lat, g.lon);
-  assert.ok(nascer.azimute > 80 && nascer.azimute < 100, 'nasce a leste no equinócio');
-});
 
-test('sol: fachadas da unidade 102 (esquina) apontam para Rua Ceará (NNE) e Rua Bahia (ONO)', () => {
-  const u = emp.unidades.find((x) => x.id === '102')!;
-  const faces = facesExternas(emp, u);
-  const lados = new Set(faces.map((f) => f.lado));
-  assert.ok(lados.has('x0') && lados.has('z1'));
-  assert.equal(azimuteDoLado('x0', emp.geo.azimuteTopoPlanta), 20);
-  const r = resumoSolarUnidade(emp, u);
-  assert.ok(r.orientacoes.length >= 2);
-  // face norte tem mais sol no inverno que no verão (hemisfério sul)
-  assert.ok(horasDeSol('2026-06-21', 0, emp.geo.lat, emp.geo.lon, -3) > horasDeSol('2026-12-21', 0, emp.geo.lat, emp.geo.lon, -3));
-});
 
 test('funil: proposta → reserva → venda muda a unidade; perda libera', () => {
   const d = dadosVazios(emp);
@@ -158,9 +126,4 @@ test('exemplo + relatório: números batem', () => {
   assert.equal(rel.funil.reduce((s, f) => s + f.qtd, 0), d.leads.length);
   assert.equal(rel.espelho.length, 9);
   assert.ok(d.leads.every((l) => l.historico.length > 0));
-});
-
-test('modelo de novo empreendimento é válido', () => {
-  const modelo: Empreendimento = JSON.parse(readFileSync(new URL('../empreendimentos/_modelo/empreendimento.json', import.meta.url), 'utf8'));
-  assert.deepEqual(validarEmpreendimento(modelo), []);
 });

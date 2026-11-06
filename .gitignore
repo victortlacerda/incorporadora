@@ -6,3 +6,4 @@ backup-*.json
 **/backup*.json
 dist/index.html
 dist/pages/
+dist/tmp/

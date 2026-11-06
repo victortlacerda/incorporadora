@@ -1,6 +1,7 @@
 # Aprendizados (o que deu certo, o que deu errado, o que o cliente não gostou)
 
-Este arquivo é a memória do projeto. Antes de começar um empreendimento novo, leia tudo. A cada rodada, acrescente.
+Este arquivo é a memória da plataforma. Antes de começar um projeto específico novo, leia tudo. A cada rodada, acrescente.
+A seção "Novos aprendizados" nasceu do **Projeto específico 1 (Missouri Residencial)**, o primeiro desenvolvido.
 
 ## Origem: o que veio das skills anteriores
 
@@ -23,7 +24,7 @@ Este arquivo é a memória do projeto. Antes de começar um empreendimento novo,
 | Duas janelas sincronizadas (BroadcastChannel + evento storage) | arena | 2ª tela para TV |
 | Reconstruir por código a partir de imagem, em passes (bloco → forma → material → luz) e conferir com screenshot | img2threejs | Prédio e interiores gerados a partir das plantas/renders do folder |
 
-## Novos aprendizados deste projeto
+## Aprendizados do Projeto específico 1 (Missouri)
 
 ### Deu certo
 - **Referencial da planta** (x direita, z para baixo, metros) + `azimuteTopoPlanta`: o mundo 3D fica alinhado com as plantas do folder, e o sol/bússola giram pelo azimute. Ruas viram eixos retos.
@@ -49,8 +50,15 @@ Este arquivo é a memória do projeto. Antes de começar um empreendimento novo,
 | Erro repetido após sair da abertura | Temporizador procurava elemento já removido | Usar variável `iniciado` em vez de consultar o DOM |
 | Ambientes de tipologias "espelhadas" no lugar errado | Retângulos dos ambientes são absolutos | Cada posição de unidade precisa de tipologia própria (ou `base` com mesma posição) |
 
-### O que o cliente não gostou
+### O que o cliente não gostou / pediu para mudar
+- Projeto 1: pediu uma **versão genérica** antes de avançar — sem nome de incorporadora, logo ou identidade — com o Missouri separado como projeto específico (v1.1). Lição: separar "plataforma" de "projeto" desde o primeiro dia.
 - (aguardando o primeiro teste de campo)
+
+## Aprendizados da generalização (v1.1)
+- Começar todo projeto novo copiando o **projeto padrão** e trocando só dados; o que for particular vira campo opcional no `empreendimento.json` (ex.: `entorno.ruasAdicionais` substituiu um `if (id === 'missouri')`).
+- Um teste automático procura nome, cidade, rua e incorporadora de cada projeto específico dentro do projeto padrão — impede que a marca de um cliente "vaze" para a versão genérica.
+- Também conferir o **arquivo montado** (`dist/padrao-apresentacao-3d.html`) com uma busca por esses nomes.
+- Dados de vendas ficam guardados por `id` do projeto: renomear pastas não perde dados, mas trocar o `id` sim.
 
 ## Regras práticas para a próxima vez
 1. Pedir **modelo 3D do arquiteto** logo no início — é o que dá realismo de render (roadmap D01/D02).

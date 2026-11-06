@@ -70,11 +70,12 @@ export function iniciarUI(emp: Empreendimento) {
     <aside class="painel" aria-label="Painel de informações"><div class="painel-cab"><h2></h2><button class="btn-ico" data-act="fechar" aria-label="Fechar painel">✕</button></div><div class="painel-corpo"></div></aside>
     <div class="toasts" aria-live="polite"></div>
     <div class="abertura" id="abertura">
-      <div class="caixa">
-        ${fotoFachada ? `<img class="foto" src="${fotoFachada}" alt="Fachada do ${esc(emp.nome)}">` : '<div></div>'}
+      <div class="caixa ${fotoFachada ? '' : 'sem-foto'}">
+        ${fotoFachada ? `<img class="foto" src="${fotoFachada}" alt="Fachada do ${esc(emp.nome)}">` : ''}
         <div>
           ${logo ? `<img class="logo-inc" src="${logo}" alt="${esc(emp.incorporadora.nome)}">` : ''}
           <h1>${esc(emp.nome.toUpperCase())}</h1><div class="ass">${esc(emp.subtitulo)}</div>
+          ${emp.projetoEspecifico ? '' : '<p class="nota" style="margin:8px 0 0">Projeto de demonstração — base para cada empreendimento</p>'}
           <p class="end">${esc(emp.endereco.logradouro)} · ${esc(emp.endereco.bairro)} · ${esc(emp.endereco.cidade)}/${esc(emp.endereco.uf)}</p>
           <div class="acoes">
             <button class="btn btn-primario btn-bloco" data-act="iniciar" disabled>▶ Iniciar apresentação</button>

@@ -1,4 +1,4 @@
-// Recursos do empreendimento ativo. O apelido @emp aponta para empreendimentos/<id> (definido no vite.config.ts
+// Recursos do empreendimento ativo. O apelido @emp aponta para projeto-padrao/ ou projetos-especificos/<NN>-<id>/ (vite.config.ts
 // pela variável EMP). Trocar de empreendimento = trocar a pasta, sem mexer no código.
 import empJson from '@emp/empreendimento.json';
 import type { Empreendimento } from './core/tipos.ts';

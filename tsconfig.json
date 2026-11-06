@@ -12,7 +12,7 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": false,
     "types": ["node"],
-    "paths": { "@emp/*": ["./empreendimentos/missouri/*"] }
+    "paths": { "@emp/*": ["./projeto-padrao/*"] }
   },
   "include": ["src", "tests", "vite.config.ts"]
 }

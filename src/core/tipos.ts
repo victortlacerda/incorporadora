@@ -1,4 +1,4 @@
-// Tipos do sistema. Dados TÉCNICOS vêm de empreendimentos/<id>/empreendimento.json;
+// Tipos do sistema. Dados TÉCNICOS vêm do empreendimento.json de cada projeto (projeto-padrao/ ou projetos-especificos/);
 // dados COMERCIAIS (status, preço, clientes) ficam no navegador e no backup .json.
 
 export type Ret = [number, number, number, number]; // [x0, x1, z0, z1] em metros, referencial da planta
@@ -53,7 +53,7 @@ export interface Empreendimento {
   id: string;
   nome: string;
   subtitulo: string;
-  incorporadora: { nome: string; telefone: string; logo: string };
+  incorporadora: { nome: string; telefone: string; logo: string | null };
   identidade: { corPrimaria: string; corSecundaria: string; corFundo: string; fonteTitulo: string; fonteAssinatura: string };
   endereco: { logradouro: string; bairro: string; cidade: string; uf: string; cep: string; esquina?: string; mapsUrl?: string };
   geo: { lat: number; lon: number; fusoHoras: number; azimuteTopoPlanta: number };
@@ -72,6 +72,10 @@ export interface Empreendimento {
   tipologias: Record<string, Tipologia>;
   unidades: UnidadeTecnica[];
   imagensGerais: { arquivo: string; titulo: string }[];
+  /** Ruas extras com nome, paralelas à rua principal (lado esquerdo da planta) ou à da esquina (lado de baixo). */
+  entorno?: { ruasAdicionais?: { nome: string; paralelaA: 'principal' | 'esquina'; quadras: number }[] };
+  /** Preenchido só nos projetos específicos (pasta projetos-especificos/). */
+  projetoEspecifico?: { numero: number; status: string };
   avisoLegal: string;
 }
 

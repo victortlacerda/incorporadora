@@ -1,7 +1,7 @@
 :root {
-  --primaria: #2e3192;
-  --primaria-clara: #8f93ff;
-  --madeira: #8a5a3c;
+  --primaria: #3f5873;
+  --primaria-clara: #9fb3cc;
+  --madeira: #7b6650;
   --fundo: #0f1216;
   --vidro: rgba(18, 22, 28, 0.78);
   --vidro-forte: rgba(14, 17, 22, 0.94);
@@ -169,9 +169,10 @@ button { cursor: pointer; }
 .alerta-item.info { border-left: 4px solid var(--texto-3); }
 
 /* ---------- abertura ---------- */
-.abertura { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: radial-gradient(ellipse at 30% 20%, rgba(46,49,146,0.35), transparent 60%), linear-gradient(160deg, #11151b, #0b0d10); transition: opacity .6s; }
+.abertura { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: radial-gradient(ellipse at 30% 20%, color-mix(in srgb, var(--primaria) 40%, transparent), transparent 60%), linear-gradient(160deg, #11151b, #0b0d10); transition: opacity .6s; }
 .abertura.saindo { opacity: 0; pointer-events: none; }
 .abertura .caixa { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 420px); gap: 36px; align-items: center; padding: 24px; max-width: 900px; }
+.abertura .caixa.sem-foto { grid-template-columns: minmax(0, 440px); }
 .abertura .foto { width: 100%; border-radius: 16px; box-shadow: var(--sombra); }
 .abertura .logo-inc { height: 70px; background: #fff; border-radius: 12px; padding: 6px; }
 .abertura h1 { margin: 18px 0 0; font-weight: 300; letter-spacing: 8px; font-size: 46px; line-height: 1; }

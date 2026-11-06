@@ -1,0 +1,1510 @@
+{
+  "$comentario": "Dados TÉCNICOS do empreendimento (não mudam com as vendas). Dados comerciais (status, preço, clientes) ficam no navegador e no backup .json. Medidas em metros, no 'referencial da planta': x = para a direita da planta, z = para baixo da planta (origem no canto superior esquerdo da torre).",
+  "id": "missouri",
+  "nome": "Missouri",
+  "subtitulo": "Residencial",
+  "incorporadora": {
+    "nome": "Costa Lacerda Empreendimentos Imobiliários",
+    "telefone": "(37) 98402-5340",
+    "logo": "logo.png"
+  },
+  "identidade": {
+    "corPrimaria": "#2e3192",
+    "corSecundaria": "#8a5a3c",
+    "corFundo": "#0f1216",
+    "fonteTitulo": "'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "fonteAssinatura": "'Brush Script MT', 'Segoe Script', 'Lucida Handwriting', cursive"
+  },
+  "endereco": {
+    "logradouro": "Rua Ceará, 361",
+    "bairro": "Centro",
+    "cidade": "Divinópolis",
+    "uf": "MG",
+    "cep": "35500-013",
+    "esquina": "Rua Bahia",
+    "mapsUrl": "https://maps.app.goo.gl/uGDcUoZUFNNHwuxs8"
+  },
+  "geo": {
+    "lat": -20.148008,
+    "lon": -44.8957967,
+    "fusoHoras": -3,
+    "azimuteTopoPlanta": 110,
+    "$azimute": "Direção (graus a partir do Norte, sentido horário) para onde aponta o TOPO da planta. Medido na vista de satélite: Rua Ceará corre a ~110°. Conferir com o projeto (D07)."
+  },
+  "memorial": "Memorial de incorporação: 4536 do 2º CRI",
+  "diferenciais": [
+    "Acabamento prime",
+    "24 apartamentos",
+    "Portaria inteligente",
+    "Quartos com piso laminado",
+    "Aquecedor solar para banhos (9º ao 12º andar)",
+    "Até 3 vagas de garagem",
+    "Infraestrutura para ar-condicionado",
+    "Sistema de câmeras",
+    "Gás canalizado com medição individual",
+    "Hidrômetro de água individual",
+    "Janelas com veneziana",
+    "Tomadas USB",
+    "Hall decorado"
+  ],
+  "predio": {
+    "peDireito": 3.0,
+    "pavimentos": 12,
+    "torre": {
+      "x0": 0,
+      "x1": 18.5,
+      "z0": 0,
+      "z1": 21.7
+    },
+    "embasamento": {
+      "x0": 0,
+      "x1": 21.5,
+      "z0": -5,
+      "z1": 21.7,
+      "pavimentos": [
+        1,
+        2
+      ]
+    },
+    "fachadaPrincipal": "x0",
+    "entrada": {
+      "lado": "x0",
+      "z0": 8.5,
+      "z1": 12.5
+    },
+    "garagem": {
+      "lado": "z1",
+      "x0": 12.5,
+      "x1": 17.5
+    },
+    "materiais": {
+      "revestimentoClaro": "#c9c6c0",
+      "revestimentoEscuro": "#3a3b3e",
+      "ripado": "#8a5a3c",
+      "laje": "#efeee9",
+      "vidro": "#5d7486"
+    }
+  },
+  "pavimentos": [
+    {
+      "numero": 1,
+      "nome": "Térreo (portaria e garagem)",
+      "tipo": "embasamento"
+    },
+    {
+      "numero": 2,
+      "nome": "Garagem",
+      "tipo": "embasamento"
+    },
+    {
+      "numero": 3,
+      "nome": "3º pavimento",
+      "planta": "planta-3pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          16.3,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ],
+      "areasDescobertas": [
+        {
+          "nome": "Área descoberta do 101",
+          "ret": [
+            0,
+            21.5,
+            -5,
+            0
+          ],
+          "unidade": "101"
+        },
+        {
+          "nome": "Área descoberta do 103",
+          "ret": [
+            18.5,
+            21.5,
+            10.3,
+            21.7
+          ],
+          "unidade": "103"
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "nome": "4º pavimento",
+      "planta": "planta-4a8pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          16.3,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ]
+    },
+    {
+      "numero": 5,
+      "nome": "5º pavimento",
+      "planta": "planta-4a8pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          16.3,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ]
+    },
+    {
+      "numero": 6,
+      "nome": "6º pavimento",
+      "planta": "planta-4a8pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          16.3,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ]
+    },
+    {
+      "numero": 7,
+      "nome": "7º pavimento",
+      "planta": "planta-4a8pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          16.3,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ]
+    },
+    {
+      "numero": 8,
+      "nome": "8º pavimento",
+      "planta": "planta-4a8pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          16.3,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ]
+    },
+    {
+      "numero": 9,
+      "nome": "9º pavimento",
+      "planta": "planta-9pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          13.5,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ],
+      "areasComuns": [
+        {
+          "nome": "Sala de reuniões (área comum, 41 m²)",
+          "ret": [
+            0,
+            8.0,
+            1.5,
+            6.5
+          ]
+        }
+      ],
+      "areasDescobertas": [
+        {
+          "nome": "Área comum descoberta (65 m²)",
+          "ret": [
+            0,
+            13.5,
+            0,
+            1.5
+          ]
+        },
+        {
+          "nome": "Área comum descoberta",
+          "ret": [
+            8.0,
+            13.5,
+            1.5,
+            4.3
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 10,
+      "nome": "10º pavimento",
+      "planta": "planta-10pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          13.5,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ],
+      "areasDescobertas": [
+        {
+          "nome": "Área descoberta (40 m²)",
+          "ret": [
+            0,
+            8.0,
+            3.0,
+            8.0
+          ]
+        }
+      ]
+    },
+    {
+      "numero": 11,
+      "nome": "11º pavimento (coberturas – 1º piso)",
+      "planta": "planta-11pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          13.5,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ]
+    },
+    {
+      "numero": 12,
+      "nome": "12º pavimento (coberturas – 2º piso)",
+      "planta": "planta-12pav.jpg",
+      "nucleo": [
+        [
+          8.0,
+          13.5,
+          4.3,
+          10.3
+        ],
+        [
+          8.0,
+          10.8,
+          10.3,
+          13.8
+        ]
+      ],
+      "vazios": [
+        [
+          8.0,
+          10.8,
+          13.8,
+          21.7
+        ]
+      ],
+      "areasDescobertas": [
+        {
+          "nome": "Terraço da Cobertura 1",
+          "ret": [
+            0,
+            8.0,
+            16.5,
+            21.7
+          ],
+          "unidade": "901"
+        },
+        {
+          "nome": "Terraço da Cobertura 2",
+          "ret": [
+            10.8,
+            18.5,
+            16.0,
+            21.7
+          ],
+          "unidade": "902"
+        }
+      ]
+    }
+  ],
+  "tipologias": {
+    "I": {
+      "nome": "Tipo I",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 2,
+      "varanda": "Varanda com mesa",
+      "descricao": "3 quartos (1 suíte), sala integrada de estar e jantar, cozinha, varanda e área de serviço. Unidade de esquina com vista para a Rua Ceará.",
+      "imagens": [
+        "sala-estar-1.jpg",
+        "sala-estar-2.jpg",
+        "sala-jantar-1.jpg",
+        "sala-jantar-2.jpg",
+        "suite-1.jpg",
+        "suite-2.jpg",
+        "banho.jpg"
+      ],
+      "ambientes": [
+        {
+          "id": "sala",
+          "nome": "Sala de estar e jantar",
+          "tipo": "sala",
+          "ret": [
+            2.7,
+            8.0,
+            0,
+            8.0
+          ]
+        },
+        {
+          "id": "varanda",
+          "nome": "Varanda",
+          "tipo": "varanda",
+          "ret": [
+            0,
+            2.7,
+            0,
+            3.8
+          ]
+        },
+        {
+          "id": "cozinha",
+          "nome": "Cozinha",
+          "tipo": "cozinha",
+          "ret": [
+            0,
+            2.7,
+            3.8,
+            8.0
+          ]
+        },
+        {
+          "id": "q3",
+          "nome": "Quarto 3",
+          "tipo": "quarto",
+          "ret": [
+            8.0,
+            11.0,
+            0,
+            4.3
+          ]
+        },
+        {
+          "id": "banho",
+          "nome": "Banho social",
+          "tipo": "banho",
+          "ret": [
+            11.0,
+            12.4,
+            0,
+            3.0
+          ]
+        },
+        {
+          "id": "q2",
+          "nome": "Quarto 2",
+          "tipo": "quarto",
+          "ret": [
+            12.4,
+            15.2,
+            0,
+            4.3
+          ]
+        },
+        {
+          "id": "suite",
+          "nome": "Suíte",
+          "tipo": "suite",
+          "ret": [
+            15.2,
+            18.5,
+            0,
+            4.3
+          ]
+        },
+        {
+          "id": "bsuite",
+          "nome": "Banho da suíte",
+          "tipo": "banho",
+          "ret": [
+            16.3,
+            18.5,
+            4.3,
+            6.5
+          ]
+        }
+      ]
+    },
+    "II": {
+      "nome": "Tipo II",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 2,
+      "varanda": "Varanda gourmet",
+      "descricao": "3 quartos (1 suíte), sala integrada, cozinha e varanda gourmet voltada para a Rua Bahia. Unidade de esquina (Rua Ceará × Rua Bahia).",
+      "imagens": [
+        "sala-estar-1.jpg",
+        "sala-jantar-1.jpg",
+        "sala-jantar-2.jpg",
+        "suite-1.jpg",
+        "suite-2.jpg",
+        "banho.jpg"
+      ],
+      "ambientes": [
+        {
+          "id": "sala",
+          "nome": "Sala de estar e jantar",
+          "tipo": "sala",
+          "ret": [
+            3.6,
+            8.0,
+            8.0,
+            16.0
+          ]
+        },
+        {
+          "id": "cozinha",
+          "nome": "Cozinha",
+          "tipo": "cozinha",
+          "ret": [
+            3.6,
+            8.0,
+            16.0,
+            18.6
+          ]
+        },
+        {
+          "id": "varanda",
+          "nome": "Varanda gourmet",
+          "tipo": "varanda",
+          "ret": [
+            3.6,
+            8.0,
+            18.6,
+            21.7
+          ]
+        },
+        {
+          "id": "q3",
+          "nome": "Quarto 3",
+          "tipo": "quarto",
+          "ret": [
+            0,
+            3.6,
+            8.0,
+            11.3
+          ]
+        },
+        {
+          "id": "banho",
+          "nome": "Banho social",
+          "tipo": "banho",
+          "ret": [
+            0,
+            2.4,
+            11.3,
+            12.7
+          ]
+        },
+        {
+          "id": "q2",
+          "nome": "Quarto 2",
+          "tipo": "quarto",
+          "ret": [
+            0,
+            3.6,
+            12.7,
+            15.9
+          ]
+        },
+        {
+          "id": "bsuite",
+          "nome": "Banho da suíte",
+          "tipo": "banho",
+          "ret": [
+            0,
+            2.6,
+            15.9,
+            17.3
+          ]
+        },
+        {
+          "id": "suite",
+          "nome": "Suíte",
+          "tipo": "suite",
+          "ret": [
+            0,
+            3.6,
+            17.3,
+            21.7
+          ]
+        }
+      ]
+    },
+    "III": {
+      "nome": "Tipo III",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 2,
+      "varanda": "Varanda",
+      "descricao": "3 quartos (1 suíte), sala integrada com cozinha e varanda voltada para a Rua Bahia.",
+      "imagens": [
+        "sala-estar-2.jpg",
+        "sala-jantar-1.jpg",
+        "suite-1.jpg",
+        "suite-2.jpg",
+        "banho.jpg"
+      ],
+      "ambientes": [
+        {
+          "id": "sala",
+          "nome": "Sala de estar e jantar",
+          "tipo": "sala",
+          "ret": [
+            10.8,
+            14.6,
+            10.3,
+            17.0
+          ]
+        },
+        {
+          "id": "cozinha",
+          "nome": "Cozinha",
+          "tipo": "cozinha",
+          "ret": [
+            10.8,
+            14.6,
+            17.0,
+            19.0
+          ]
+        },
+        {
+          "id": "varanda",
+          "nome": "Varanda",
+          "tipo": "varanda",
+          "ret": [
+            10.8,
+            14.6,
+            19.0,
+            21.7
+          ]
+        },
+        {
+          "id": "q3",
+          "nome": "Quarto 3",
+          "tipo": "quarto",
+          "ret": [
+            14.6,
+            18.5,
+            10.3,
+            13.4
+          ]
+        },
+        {
+          "id": "q2",
+          "nome": "Quarto 2",
+          "tipo": "quarto",
+          "ret": [
+            14.6,
+            18.5,
+            13.4,
+            16.4
+          ]
+        },
+        {
+          "id": "bsuite",
+          "nome": "Banho da suíte",
+          "tipo": "banho",
+          "ret": [
+            16.3,
+            18.5,
+            16.4,
+            17.6
+          ]
+        },
+        {
+          "id": "suite",
+          "nome": "Suíte",
+          "tipo": "suite",
+          "ret": [
+            14.6,
+            18.5,
+            17.6,
+            21.7
+          ]
+        },
+        {
+          "id": "banho",
+          "nome": "Banho social",
+          "tipo": "banho",
+          "ret": [
+            16.3,
+            18.5,
+            6.5,
+            8.6
+          ]
+        }
+      ]
+    },
+    "IV": {
+      "nome": "Tipo IV",
+      "base": "II",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 2,
+      "varanda": "Varanda gourmet",
+      "descricao": "Planta semelhante ao Tipo II, com sala ampliada. Vizinha à sala de reuniões do 9º pavimento (área comum).",
+      "imagens": [
+        "sala-estar-1.jpg",
+        "sala-jantar-1.jpg",
+        "suite-1.jpg",
+        "banho.jpg"
+      ]
+    },
+    "V": {
+      "nome": "Tipo V",
+      "base": "III",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 2,
+      "varanda": "Varanda",
+      "descricao": "Planta semelhante ao Tipo III, com área ampliada no lado direito do pavimento.",
+      "imagens": [
+        "sala-estar-2.jpg",
+        "sala-jantar-2.jpg",
+        "suite-2.jpg",
+        "banho.jpg"
+      ]
+    },
+    "VI": {
+      "nome": "Tipo VI",
+      "base": "II",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 2,
+      "varanda": "Varanda gourmet",
+      "descricao": "Planta semelhante ao Tipo II, com área descoberta de 40 m² no pavimento.",
+      "imagens": [
+        "sala-estar-1.jpg",
+        "sala-jantar-2.jpg",
+        "suite-1.jpg",
+        "banho.jpg"
+      ]
+    },
+    "C1": {
+      "nome": "Cobertura 1 (duplex)",
+      "base": "II",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 3,
+      "varanda": "Terraço descoberto + espaço gourmet",
+      "descricao": "Cobertura duplex: no 1º piso, 3 quartos (1 suíte) e sala; no 2º piso, espaço gourmet com churrasqueira, sala de TV, lavabo e terraço descoberto voltado para a Rua Bahia.",
+      "imagens": [
+        "cobertura-estar-escada.jpg",
+        "cobertura-gourmet-1.jpg",
+        "cobertura-gourmet-2.jpg",
+        "cobertura-gourmet-3.jpg",
+        "lavabo.jpg",
+        "suite-1.jpg"
+      ],
+      "ambientesSuperiores": [
+        {
+          "id": "gourmet",
+          "nome": "Espaço gourmet (2º piso)",
+          "tipo": "gourmet",
+          "ret": [
+            0,
+            8.0,
+            8.0,
+            14.2
+          ]
+        },
+        {
+          "id": "lavabo",
+          "nome": "Lavabo (2º piso)",
+          "tipo": "lavabo",
+          "ret": [
+            0,
+            2.0,
+            14.2,
+            16.5
+          ]
+        },
+        {
+          "id": "tv",
+          "nome": "Sala de TV (2º piso)",
+          "tipo": "salaTv",
+          "ret": [
+            2.0,
+            8.0,
+            14.2,
+            16.5
+          ]
+        },
+        {
+          "id": "terraco",
+          "nome": "Terraço descoberto",
+          "tipo": "terraco",
+          "ret": [
+            0,
+            8.0,
+            16.5,
+            21.7
+          ]
+        }
+      ]
+    },
+    "C2": {
+      "nome": "Cobertura 2 (duplex)",
+      "base": "III",
+      "quartos": 3,
+      "suites": 1,
+      "banheiros": 3,
+      "varanda": "Terraço descoberto + espaço gourmet",
+      "descricao": "Cobertura duplex: no 1º piso, 3 quartos (1 suíte) e sala; no 2º piso, espaço gourmet com churrasqueira, sala de estar e terraço descoberto voltado para a Rua Bahia.",
+      "imagens": [
+        "cobertura-gourmet-1.jpg",
+        "cobertura-gourmet-2.jpg",
+        "cobertura-gourmet-3.jpg",
+        "cobertura-estar-escada.jpg",
+        "lavabo.jpg"
+      ],
+      "ambientesSuperiores": [
+        {
+          "id": "gourmet",
+          "nome": "Espaço gourmet (2º piso)",
+          "tipo": "gourmet",
+          "ret": [
+            10.8,
+            18.5,
+            10.3,
+            14.0
+          ]
+        },
+        {
+          "id": "tv",
+          "nome": "Sala de estar (2º piso)",
+          "tipo": "salaTv",
+          "ret": [
+            10.8,
+            18.5,
+            14.0,
+            16.0
+          ]
+        },
+        {
+          "id": "terraco",
+          "nome": "Terraço descoberto",
+          "tipo": "terraco",
+          "ret": [
+            10.8,
+            18.5,
+            16.0,
+            21.7
+          ]
+        }
+      ]
+    }
+  },
+  "unidades": [
+    {
+      "id": "101",
+      "pavimento": 3,
+      "tipologia": "I",
+      "areaPrivativa": 114,
+      "areaDescoberta": 100,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          0,
+          8.0
+        ],
+        [
+          8.0,
+          18.5,
+          0,
+          4.3
+        ],
+        [
+          16.3,
+          18.5,
+          4.3,
+          6.5
+        ]
+      ]
+    },
+    {
+      "id": "102",
+      "pavimento": 3,
+      "tipologia": "II",
+      "areaPrivativa": 110,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "103",
+      "pavimento": 3,
+      "tipologia": "III",
+      "areaPrivativa": 104,
+      "areaDescoberta": 32,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          16.3,
+          18.5,
+          6.5,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "201",
+      "pavimento": 4,
+      "tipologia": "I",
+      "areaPrivativa": 114,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          0,
+          8.0
+        ],
+        [
+          8.0,
+          18.5,
+          0,
+          4.3
+        ],
+        [
+          16.3,
+          18.5,
+          4.3,
+          6.5
+        ]
+      ]
+    },
+    {
+      "id": "202",
+      "pavimento": 4,
+      "tipologia": "II",
+      "areaPrivativa": 110,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "203",
+      "pavimento": 4,
+      "tipologia": "III",
+      "areaPrivativa": 102,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          16.3,
+          18.5,
+          6.5,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "301",
+      "pavimento": 5,
+      "tipologia": "I",
+      "areaPrivativa": 114,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          0,
+          8.0
+        ],
+        [
+          8.0,
+          18.5,
+          0,
+          4.3
+        ],
+        [
+          16.3,
+          18.5,
+          4.3,
+          6.5
+        ]
+      ]
+    },
+    {
+      "id": "302",
+      "pavimento": 5,
+      "tipologia": "II",
+      "areaPrivativa": 110,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "303",
+      "pavimento": 5,
+      "tipologia": "III",
+      "areaPrivativa": 102,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          16.3,
+          18.5,
+          6.5,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "401",
+      "pavimento": 6,
+      "tipologia": "I",
+      "areaPrivativa": 114,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          0,
+          8.0
+        ],
+        [
+          8.0,
+          18.5,
+          0,
+          4.3
+        ],
+        [
+          16.3,
+          18.5,
+          4.3,
+          6.5
+        ]
+      ]
+    },
+    {
+      "id": "402",
+      "pavimento": 6,
+      "tipologia": "II",
+      "areaPrivativa": 110,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "403",
+      "pavimento": 6,
+      "tipologia": "III",
+      "areaPrivativa": 102,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          16.3,
+          18.5,
+          6.5,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "501",
+      "pavimento": 7,
+      "tipologia": "I",
+      "areaPrivativa": 114,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          0,
+          8.0
+        ],
+        [
+          8.0,
+          18.5,
+          0,
+          4.3
+        ],
+        [
+          16.3,
+          18.5,
+          4.3,
+          6.5
+        ]
+      ]
+    },
+    {
+      "id": "502",
+      "pavimento": 7,
+      "tipologia": "II",
+      "areaPrivativa": 110,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "503",
+      "pavimento": 7,
+      "tipologia": "III",
+      "areaPrivativa": 102,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          16.3,
+          18.5,
+          6.5,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "601",
+      "pavimento": 8,
+      "tipologia": "I",
+      "areaPrivativa": 114,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          0,
+          8.0
+        ],
+        [
+          8.0,
+          18.5,
+          0,
+          4.3
+        ],
+        [
+          16.3,
+          18.5,
+          4.3,
+          6.5
+        ]
+      ]
+    },
+    {
+      "id": "602",
+      "pavimento": 8,
+      "tipologia": "II",
+      "areaPrivativa": 110,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "603",
+      "pavimento": 8,
+      "tipologia": "III",
+      "areaPrivativa": 102,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          16.3,
+          18.5,
+          6.5,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "701",
+      "pavimento": 9,
+      "tipologia": "IV",
+      "areaPrivativa": 111,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          6.5,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "702",
+      "pavimento": 9,
+      "tipologia": "V",
+      "areaPrivativa": 110,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          13.5,
+          18.5,
+          1.5,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "801",
+      "pavimento": 10,
+      "tipologia": "VI",
+      "areaPrivativa": 111,
+      "areaDescoberta": 40,
+      "vagas": 2,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ]
+    },
+    {
+      "id": "802",
+      "pavimento": 10,
+      "tipologia": "V",
+      "areaPrivativa": 108,
+      "areaDescoberta": 0,
+      "vagas": 2,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          13.5,
+          18.5,
+          0,
+          10.3
+        ]
+      ]
+    },
+    {
+      "id": "901",
+      "nome": "Cobertura 1",
+      "pavimento": 11,
+      "pavimentosOcupados": [
+        11,
+        12
+      ],
+      "tipologia": "C1",
+      "areaPrivativa": 183,
+      "areaDescoberta": 35,
+      "vagas": 3,
+      "volumes": [
+        [
+          0,
+          8.0,
+          8.0,
+          21.7
+        ]
+      ],
+      "volumesSuperiores": [
+        [
+          0,
+          8.0,
+          8.0,
+          16.5
+        ]
+      ]
+    },
+    {
+      "id": "902",
+      "nome": "Cobertura 2",
+      "pavimento": 11,
+      "pavimentosOcupados": [
+        11,
+        12
+      ],
+      "tipologia": "C2",
+      "areaPrivativa": 178,
+      "areaDescoberta": 30,
+      "vagas": 3,
+      "volumes": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          21.7
+        ],
+        [
+          13.5,
+          18.5,
+          4.3,
+          10.3
+        ]
+      ],
+      "volumesSuperiores": [
+        [
+          10.8,
+          18.5,
+          10.3,
+          16.0
+        ]
+      ]
+    }
+  ],
+  "imagensGerais": [
+    {
+      "arquivo": "fachada.jpg",
+      "titulo": "Fachada"
+    },
+    {
+      "arquivo": "fachada-entrada.jpg",
+      "titulo": "Entrada"
+    },
+    {
+      "arquivo": "hall-entrada.jpg",
+      "titulo": "Hall de entrada"
+    },
+    {
+      "arquivo": "hall-estar.jpg",
+      "titulo": "Hall decorado"
+    }
+  ],
+  "avisoLegal": "Imagens ilustrativas. Móveis e decoração não fazem parte do imóvel. Medidas aproximadas, conforme folder de vendas.",
+  "entorno": {
+    "ruasAdicionais": [
+      {
+        "nome": "Rua Alagoas",
+        "paralelaA": "principal",
+        "quadras": 1
+      },
+      {
+        "nome": "Rua Mato Grosso",
+        "paralelaA": "esquina",
+        "quadras": 1
+      }
+    ]
+  },
+  "projetoEspecifico": {
+    "numero": 1,
+    "status": "Fase 1 entregue (v0.1) — aguardando teste de campo"
+  }
+}

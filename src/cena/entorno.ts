@@ -1,4 +1,4 @@
-// Entorno urbano gerado: quadras alinhadas às ruas reais (Rua Ceará × Rua Bahia), vizinhos, árvores,
+// Entorno urbano gerado: quadras alinhadas às ruas do terreno (rua principal × rua da esquina), vizinhos, árvores,
 // postes, carros, nomes de ruas e morros no horizonte. É APROXIMADO (não é o levantamento real do bairro).
 import * as THREE from 'three';
 import type { Empreendimento } from '../core/tipos.ts';
@@ -22,8 +22,8 @@ export function criarEntorno(emp: Empreendimento, ruasNomeadas: Rua[]): EntornoC
   const grupo = new THREE.Group(); grupo.name = 'entorno';
   const r = rng(2026);
   const E = emp.predio.embasamento;
-  const cx0 = E.x0 - CALC - 4.5; // eixo da rua à esquerda da planta (Rua Ceará)
-  const cz0 = E.z1 + CALC + 4.5; // eixo da rua de baixo da planta (Rua Bahia)
+  const cx0 = E.x0 - CALC - 4.5; // eixo da rua à esquerda da planta (rua principal)
+  const cz0 = E.z1 + CALC + 4.5; // eixo da rua de baixo da planta (rua da esquina)
   const N = 3;
   const eixosX = Array.from({ length: 2 * N + 1 }, (_, i) => cx0 + (i - N) * PERIODO);
   const eixosZ = Array.from({ length: 2 * N + 1 }, (_, i) => cz0 + (i - N) * PERIODO);
@@ -312,10 +312,10 @@ export function ruasDoEmpreendimento(emp: Empreendimento): Rua[] {
   const esquerda = emp.endereco.logradouro.replace(/,.*$/, '');
   nomes.push({ nome: esquerda, eixo: 'z', centro: cx0 });
   if (emp.endereco.esquina) nomes.push({ nome: emp.endereco.esquina, eixo: 'x', centro: cz0 });
-  // Ruas paralelas vistas no satélite (Missouri). Para outro projeto, ajustar ou remover.
-  if (emp.id === 'missouri') {
-    nomes.push({ nome: 'Rua Alagoas', eixo: 'z', centro: cx0 + PERIODO });
-    nomes.push({ nome: 'Rua Mato Grosso', eixo: 'x', centro: cz0 + PERIODO });
+  // Ruas extras com nome (definidas no empreendimento.json → entorno.ruasAdicionais)
+  for (const r of emp.entorno?.ruasAdicionais ?? []) {
+    if (r.paralelaA === 'principal') nomes.push({ nome: r.nome, eixo: 'z', centro: cx0 + r.quadras * PERIODO });
+    else nomes.push({ nome: r.nome, eixo: 'x', centro: cz0 + r.quadras * PERIODO });
   }
   return nomes;
 }

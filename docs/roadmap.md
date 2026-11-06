@@ -1,218 +1,189 @@
-# Roadmap — Sistema de vendas 3D para incorporadoras
+# Roadmap da plataforma — Apresentação 3D e CRM de vendas para incorporadoras
 
-**Versão do roadmap:** v1.0 · **Data:** 06/11/2026 · **Empreendimento piloto:** Missouri Residencial (Costa Lacerda) — Rua Ceará, 361, Centro, Divinópolis/MG
+**Versão:** v1.1 · **Data:** 06/11/2026
 
-> Este arquivo é o "contrato" do projeto. **Nenhuma ideia se perde:** tudo o que você pedir entra aqui (pedido, decisão, banco de ideias) e é atualizado a cada rodada.
-> Convenção: nas decisões, ⭐ = minha recomendação. Para aprovar todas as recomendações, responda apenas **"ok com as estrelas"**. No roadmap: `[x]` feito · `[~]` parcial · `[ ]` a fazer.
+> Este arquivo é o "contrato" da **plataforma genérica** (o produto). Cada projeto específico tem o seu próprio roadmap em `projetos-especificos/<NN>-<id>/roadmap.md`.
+> **Nenhuma ideia se perde:** todo pedido entra aqui (pedido, decisão, banco de ideias) e é atualizado a cada rodada.
+> Convenção: ⭐ = minha recomendação; responda **"ok com as estrelas"** para aprovar todas. `[x]` feito · `[~]` parcial · `[ ]` a fazer.
 
 ---
 
-## O que mudou nesta rodada (v1.0)
+## O que mudou nesta rodada (v1.1 — generalização)
 
-- Projeto criado do zero no GitHub, com a **Fase 0 (planejamento)** e a **Fase 1 (protótipo funcional)** entregues juntas, para você já ver funcionando.
-- Maquete 3D do Missouri gerada a partir do folder (plantas do 3º ao 12º pavimento, 24 unidades, 8 tipologias), no **local e orientação reais** (coordenadas do link do Google Maps; ruas medidas na vista de satélite).
-- Sol na posição real para qualquer data/hora, modo noturno com **luz acesa = unidade disponível**, câmera tipo drone, clique na unidade → voo até a fachada + painel com ficha técnica/comercial.
-- **Tour virtual guiado** por todos os cômodos de cada tipologia, com a vista real da janela daquele andar.
-- Modo **cliente** (só visualização) e modo **gerente** (PIN) com CRM (funil de clientes), espelho de vendas, edição de unidades, alertas.
-- **Relatórios** em PDF, Word e Excel; **backup .json** (exportar/importar com validação).
-- Estrutura **multi-empreendimento**: cada projeto novo é uma pasta `empreendimentos/<id>/` + skill com tudo o que aprendemos.
+- O sistema virou uma **plataforma genérica**: o app, o repositório, o README e a descrição no GitHub não citam mais nenhuma incorporadora, logo ou identidade visual.
+- Criado o **projeto padrão** (`projeto-padrao/`): empreendimento de demonstração "Modelo Residencial", sem logo, com cores neutras, endereço e localização de exemplo. A volumetria e as plantas vieram do primeiro projeto (24 unidades, 8 tipologias, coberturas duplex), sem nenhuma imagem ou texto dele.
+- O **Missouri Residencial** virou o **Projeto específico 1**, numa pasta própria (`projetos-especificos/01-missouri/`) com seus dados, imagens do folder e roadmap.
+- O que era "código especial do Missouri" (ruas Alagoas e Mato Grosso) passou a ser **dado do projeto** (`entorno.ruasAdicionais`), sem nenhum caso especial no código.
+- Novo comando `npm run build:todos`: gera `dist/padrao-apresentacao-3d.html` e `dist/missouri-apresentacao-3d.html` de uma vez.
+- Testes passam a validar **todos os projetos** automaticamente e conferem que o projeto padrão não contém nome, cidade ou incorporadora de nenhum projeto específico (15 testes).
 
 ---
 
 ## 1. Visão e premissas
 
-- **Objetivo:** apresentar e vender os apartamentos de um empreendimento com uma maquete 3D navegável e realista, e ao mesmo tempo controlar as vendas (CRM) sem depender de sistema externo.
-- **Uso na fase atual:** computador do plantão/escritório, **sem internet obrigatória e sem servidor**: um único arquivo `.html` que abre por duplo clique no Chrome.
-- **Fases futuras:** link na internet (GitHub Pages ou domínio próprio), uso no **celular** (PWA instalável), dados compartilhados entre corretores (servidor/banco).
-- **Reaproveitamento:** cada novo empreendimento/incorporadora = nova pasta de dados + identidade visual; o código é o mesmo.
-- **Público:** dono/gerente comercial (leigo em tecnologia, português), corretores e clientes finais.
+- **Produto:** apresentar e vender os apartamentos de um empreendimento com maquete 3D navegável (sol real, noite, drone, tour virtual) e controlar as vendas (CRM, espelho, relatórios) sem depender de sistema externo.
+- **Uma base, vários projetos:** o código é o mesmo; cada empreendimento é uma pasta de dados (`empreendimento.json` + imagens + identidade visual).
+- **Hoje:** computador do plantão, **sem internet e sem servidor**, um único `.html` que abre por duplo clique no Chrome.
+- **Depois:** link na internet, celular (PWA instalável), vários corretores com dados compartilhados.
+- **Público:** dono/gerente comercial (leigo em tecnologia), corretores e clientes finais.
 
-## 2. O que você pediu (registro fiel) e onde está
+## 2. Estrutura
+
+| Pasta | O que é |
+|---|---|
+| `projeto-padrao/` | Projeto genérico de demonstração e **ponto de partida** de todo projeto específico |
+| `projetos-especificos/<NN>-<id>/` | Um empreendimento real: dados, imagens, identidade visual e roadmap próprio |
+| `src/` | Código da plataforma (igual para todos) |
+| `docs/` | Roadmap da plataforma, aprendizados e passo a passo para um projeto novo |
+
+**Projetos específicos**
+
+| Nº | Projeto | Incorporadora | Situação |
+|---|---|---|---|
+| 1 | Missouri Residencial — Divinópolis/MG | Costa Lacerda | Fase 1 entregue (v0.1); aguardando teste de campo · [roadmap](../projetos-especificos/01-missouri/roadmap.md) |
+
+## 3. Pedidos registrados (plataforma)
 
 | # | Pedido | Situação |
 |---|---|---|
-| P01 | Sistema de vendas/CRM para incorporadoras, gestão das vendas de um empreendimento | [x] v1 (funil, clientes, unidades, alertas) |
-| P02 | Visualização 3D **realista** do empreendimento | [~] procedural com materiais PBR, céu físico, sombras; ver D01 para o próximo salto de realismo |
-| P03 | Vista do entorno e da localização | [~] ruas reais (Ceará, Bahia, Alagoas, Mato Grosso) e orientação real; prédios vizinhos ilustrativos (ver D03) |
-| P04 | Projeção solar | [x] sol por data/hora/coordenada, trajetória, animação do dia, horas de sol por fachada em cada unidade |
-| P05 | Vista noturna | [x] céu noturno, estrelas, postes, janelas dos vizinhos, letreiro e LEDs |
-| P06 | Visão "de drone" e navegação fluida | [x] órbita livre, voo automático de drone, vistas prontas (rua, aérea, bairro) |
-| P07 | Clicar em cada unidade e ver informações técnicas e comerciais | [x] painel lateral com ficha, preço, condições, orientação solar, planta, imagens |
-| P08 | Indicar disponibilidade (ex.: luz acesa à noite) | [x] acesa = disponível, meia-luz = reservado/negociação, apagada = vendido; + modo "Disponibilidade" colorido de dia (cor + texto) |
-| P09 | Ao clicar: zoom na unidade + tela ao lado | [x] voo de câmera até a fachada da unidade + painel |
-| P10 | Tour virtual 3D realista do interior, visita guiada por todos os cômodos | [~] tour guiado por todos os cômodos com móveis e materiais inspirados nos renders, vista real da janela; ver D02 para o próximo salto de realismo |
-| P11 | Modo gerente (controle total) e modo cliente (visualização) | [x] PIN de 4 a 8 números; modo cliente esconde nomes, CRM e relatórios |
-| P12 | Local agora; depois link e celular | [x] arquivo único por duplo clique; build já gera pasta para publicar + PWA; layout de celular |
-| P13 | Relatório de vendas em docx, pdf e excel | [x] os três, com imagem da maquete, KPIs, espelho, vendas, funil, corretores (Excel com fórmulas) |
-| P14 | Backup em .json sem banco de dados + importar ao abrir | [x] exportar/importar com validação; botão "Importar backup" já na tela de abertura |
-| P15 | Estrutura para gerar sistemas de outros empreendimentos/incorporadoras aproveitando o aprendizado | [x] `empreendimentos/<id>/`, `docs/novo-empreendimento.md`, `docs/aprendizados.md`, skill `.claude/skills/incorporadora-3d` |
-| P16 | Roadmap com fases, decisões, ideias, sugestões, atualizado passo a passo | [x] este arquivo |
-| P17 | Projeto no repositório github.com/victortlacerda/incorporadora | [x] |
-| P18 | Usar as skills anteriores (arena, showroom) e img2threejs | [x] aplicadas (ver `docs/aprendizados.md` §Origem) |
-
-## 3. Dados do empreendimento extraídos do folder
-
-- 12 pavimentos: 1º térreo (portaria/garagem), 2º garagem, 3º ao 10º tipos, 11º–12º coberturas duplex. 24 apartamentos.
-- **3º pav.:** 101 (Tipo I, 114 m² + 100 m² descobertos), 102 (Tipo II, 110 m²), 103 (Tipo III, 104 m² + 32 m² descobertos).
-- **4º ao 8º:** x01 Tipo I 114 m² · x02 Tipo II 110 m² · x03 Tipo III 102 m² (unidades 201 a 603).
-- **9º:** 701 Tipo IV 111 m² · 702 Tipo V 110 m² · sala de reuniões (área comum 41 m²) + 65 m² descobertos.
-- **10º:** 801 Tipo VI 111 m² (+40 m² descobertos) · 802 Tipo V 108 m².
-- **11º/12º:** Cobertura 1 (112 + 71 m² + 35 m² descobertos) · Cobertura 2 (108 + 70 m² + 30 m² descobertos).
-- Diferenciais do folder: acabamento prime, portaria inteligente, quartos com piso laminado, aquecedor solar (9º ao 12º), até 3 vagas, infra para ar-condicionado, câmeras, gás canalizado e hidrômetro individuais, janelas com veneziana, tomadas USB, hall decorado. Memorial: 4536 do 2º CRI.
-- **Localização:** −20,148008 / −44,895797. Rua Ceará corre a ~110° (ESE); o terreno fica na esquina sudeste com a Rua Bahia. Fachada da Rua Ceará olha para ~20° (NNE) e a da Rua Bahia para ~290° (ONO).
+| P01 | Sistema de vendas/CRM para incorporadoras | [x] funil, clientes, unidades, alertas |
+| P02 | Visualização 3D **realista** do empreendimento | [~] gerada por código com materiais realistas, céu físico e sombras; ver D11 (modelo 3D do arquiteto) |
+| P03 | Vista do entorno e da localização | [~] ruas alinhadas ao terreno e orientação real; vizinhos ilustrativos (D03) |
+| P04 | Projeção solar | [x] sol por data/hora/coordenada, trajetória, animação do dia, horas de sol por fachada |
+| P05 | Vista noturna | [x] céu, estrelas, postes, janelas acesas, letreiro e LEDs |
+| P06 | Visão "de drone" e navegação fluida | [x] órbita, drone automático, vistas prontas |
+| P07 | Clicar na unidade e ver informações técnicas e comerciais | [x] painel lateral |
+| P08 | Indicar disponibilidade (luz acesa à noite) | [x] acesa = disponível, meia-luz = reservado/negociação, apagada = vendido |
+| P09 | Ao clicar: zoom na unidade + tela ao lado | [x] |
+| P10 | Tour virtual 3D, visita guiada por todos os cômodos | [~] interiores gerados pelas plantas, vista real da janela; ver D11 |
+| P11 | Modo gerente (controle total) e modo cliente (visualização) | [x] PIN |
+| P12 | Local agora; depois link e celular | [x] arquivo único; pasta para publicar + PWA; layout de celular |
+| P13 | Relatório de vendas em docx, pdf e excel | [x] |
+| P14 | Backup .json sem banco de dados + importar ao abrir | [x] |
+| P15 | Estrutura para outros empreendimentos/incorporadoras aproveitando o aprendizado | [x] projeto padrão + projetos específicos + `docs/novo-projeto-especifico.md` + skill |
+| P16 | Roadmap com fases, decisões, ideias, atualizado passo a passo | [x] este arquivo + roadmap por projeto |
+| P17 | Projeto no GitHub (victortlacerda/incorporadora) | [x] |
+| P18 | Aproveitar skills anteriores (arena, showroom) e img2threejs | [x] ver `docs/aprendizados.md` |
+| P19 | **Versão genérica** sem nome de incorporadora, logo ou identidade visual; Missouri como Projeto específico 1 em pasta separada; app, GitHub e descrição genéricos | [x] v1.1 |
 
 ## 4. Decisões
 
-### 4.A Decisões tomadas por mim nesta rodada (padrão sensato — pode mudar)
+### 4.A Decisões tomadas (padrão sensato — pode mudar)
 
 | Nº | Decisão | Motivo / impacto |
 |---|---|---|
-| D-A1 | Tecnologia: **Vite + TypeScript + Three.js**, tudo num **único .html** (sem servidor), relatórios gerados no navegador (jsPDF, docx, ExcelJS) | Abre por duplo clique hoje; o mesmo código vira link/PWA depois |
-| D-A2 | Dados técnicos em `empreendimento.json` (não mudam com vendas); dados comerciais no navegador + backup `.json` | Separar o que é projeto do que é venda facilita trocar de empreendimento |
-| D-A3 | Regras de negócio em funções puras testadas (`src/core`) — a tela só chama | Menos erro, testes automáticos (12 testes) |
-| D-A4 | Primeiro uso abre com **dados de exemplo** (preços ~R$ 7.600/m², 14 clientes fictícios) marcados como exemplo; botão "Começar do zero" | Você vê tudo funcionando já; nada fictício vai para relatório sem aviso |
-| D-A5 | Unidades das coberturas numeradas **901 e 902** | Sequência natural (701/702 no 9º, 801/802 no 10º); confirmar em D06 |
-| D-A6 | Status: Disponível · Em negociação · Reservado · Vendido · Indisponível (permuta/bloqueio). Cores sempre com texto e ícone | Acessibilidade; contraste medido (≥ 4,5:1) |
-| D-A7 | Funil: Novo → Em contato → Visita → Proposta → Reserva → Contrato → Vendido / Perdido. Proposta põe a unidade "em negociação"; Reserva bloqueia por 7 dias (configurável); Contrato/Vendido marca vendida; Perdido libera e exige motivo | Evita duas reservas na mesma unidade e mantém o espelho sempre certo |
-| D-A8 | PIN só trava a tela (hash com sal); sessão vale até fechar o navegador | Segurança forte virá com login na fase online |
-| D-A9 | Entorno: ruas e quadras alinhadas à realidade; prédios vizinhos **gerados** (ilustrativos) | Sem acesso a dados de prédios reais nesta fase (ver D03) |
-| D-A10 | Tour: interiores **gerados por código** a partir das plantas do folder (medidas aproximadas), com botão para ver os **renders reais** do folder em cada ambiente | Funciona offline e em qualquer tipologia; ver D02 |
-| D-A11 | Modo apresentação: depois de 2 min sem toque (modo cliente), o drone começa a voar sozinho | Bom para TV no plantão |
-| D-A12 | Segunda tela: botão "Abrir 2ª tela para o cliente (TV)" no gerente; as janelas se sincronizam sozinhas | Corretor opera no notebook, cliente vê na TV |
+| D-A1 | Vite + TypeScript + Three.js, tudo num **único .html**; relatórios no navegador (jsPDF, docx, ExcelJS) | Duplo clique hoje; o mesmo código vira link/PWA |
+| D-A2 | Dados técnicos em `empreendimento.json`; dados comerciais no navegador + backup `.json` | Trocar de empreendimento sem mexer no código |
+| D-A3 | Regras de negócio em funções puras testadas (`src/core`) | Menos erro; testes automáticos |
+| D-A4 | Primeiro uso com **dados de exemplo** marcados; botão "Começar do zero" | Ver funcionando já; nada fictício sem aviso |
+| D-A6 | Status: Disponível · Em negociação · Reservado · Vendido · Indisponível, sempre com cor + texto + ícone | Acessibilidade (contraste ≥ 4,5:1) |
+| D-A7 | Funil: Novo → Contato → Visita → Proposta → Reserva → Contrato → Vendido / Perdido, com efeito automático na unidade | Espelho sempre certo; sem reserva dupla |
+| D-A8 | PIN só trava a tela; segurança forte com login na fase online | — |
+| D-A9 | Entorno com ruas alinhadas ao terreno; vizinhos ilustrativos | Sem dados de prédios reais (D03) |
+| D-A10 | Tour com interiores gerados a partir das plantas + botão para os renders do folder | Funciona offline em qualquer tipologia |
+| D-A11 | Drone automático após 2 min sem toque no modo cliente | TV do plantão |
+| D-A12 | 2ª tela sincronizada para o cliente (TV) | Corretor no notebook, cliente na TV |
+| D-A13 | **Projeto padrão** "Modelo Residencial": sem logo, cores neutras (azul-ardósia `#3f5873` e madeira `#7b6650`), endereço "Rua Principal, 100 — Sua Cidade/UF", localização de exemplo em Brasília com norte no topo da planta | Genérico, mas com sol plausível para o Brasil |
+| D-A14 | Estrutura `projeto-padrao/` + `projetos-especificos/<NN>-<id>/`; o comando de montagem aceita `EMP=padrao` ou `EMP=<id>` | Numeração dos projetos específicos em ordem de chegada |
+| D-A15 | Particularidades de um projeto viram **dado** no `empreendimento.json`, nunca `if (projeto === …)` no código | A plataforma continua genérica a cada projeto novo |
+| D-A16 | O projeto padrão herda a volumetria do Projeto 1 (plantas viraram "plantas-modelo") sem imagens, textos ou endereço dele; um teste garante isso | Demonstração completa sem expor o cliente |
 
-### 4.B Perguntas para você (responda "ok com as estrelas" ou ajuste)
+### 4.B Perguntas abertas da plataforma
 
-**D01 — Realismo máximo da fachada/maquete.** Hoje o prédio é gerado por código a partir das plantas.
-- ⭐ (a) Me enviar o **modelo 3D do arquiteto** (SketchUp `.skp`, Revit, `.fbx`, `.obj` ou `.glb`). Eu converto para `.glb` otimizado e o sistema carrega no lugar do prédio gerado (a parte de clique/status continua igual). É o caminho para o realismo "de render".
-- (b) Seguir refinando o prédio por código, a partir das imagens do folder (técnica img2threejs).
-- Ajustar: ___
+**D03 — Entorno real.** ⭐ (a) fase online: Google Photorealistic 3D Tiles (cidade real em 3D, chave de API + internet) · (b) contornos do OpenStreetMap · (c) manter ilustrativo · Ajustar: ___
 
-**D02 — Realismo do tour interno.**
-- ⭐ (a) Usar o modelo 3D de interiores do arquiteto/decorador (o mesmo que gerou os renders do folder) + **fotos 360°** renderizadas por cômodo (o render 360° é a forma mais realista e leve de "visita").
-- (b) Manter interiores gerados e melhorar móveis/iluminação aos poucos.
-- Ajustar: ___
+**D04 — Preço no modo cliente (padrão da plataforma).** ⭐ mostrar só das disponíveis/em negociação, com opção de desligar · "Preço sob consulta" sempre · Ajustar: ___
 
-**D03 — Entorno real.**
-- ⭐ (a) Fase online: usar **Google Photorealistic 3D Tiles** (cidade real em 3D, requer chave de API Google e internet) com o nosso prédio inserido.
-- (b) Importar contornos de prédios do **OpenStreetMap** (gratuito, mas altura nem sempre existe em Divinópolis).
-- (c) Manter o entorno ilustrativo.
-- Ajustar: ___
+**D09 — Fase online (link + celular + vários corretores).** ⭐ (a) Supabase · (b) Firebase · (c) servidor próprio. Decidir na Fase 4.
 
-**D04 — Preço no modo cliente.** ⭐ mostrar preço de tabela só das disponíveis/em negociação (já é o padrão, com opção de desligar) · ou "Preço sob consulta" sempre · Ajustar: ___
+**D10 — Publicação.** ⭐ GitHub Pages grátis: o projeto padrão no endereço principal e cada projeto específico numa subpasta (`…/missouri/`) · domínio próprio depois. A publicação está **preparada mas desligada**.
 
-**D05 — Tabela de preços.** Me envie a tabela oficial (preço por unidade, condições, entrada/parcelas/chaves). ⭐ Eu importo de uma planilha Excel com colunas Unidade · Preço · Condições. Ajustar: ___
+**D11 — Realismo com modelo 3D do arquiteto (recurso da plataforma).** ⭐ a plataforma passa a aceitar um `.glb` por projeto (fachada e/ou interiores) no lugar do prédio gerado, mantendo clique, status e tour · seguir só com geração por código · Ajustar: ___ *(antes D01/D02 do Missouri; as perguntas sobre o arquivo do Missouri continuam no roadmap dele)*
 
-**D06 — Numeração e vagas.** Confirmar: coberturas são **901/902**? Vagas por unidade (hoje 2 para tipos e 3 para coberturas — o folder diz "até 3 vagas")? ⭐ Me envie a lista de vagas por unidade.
+**D12 — Nome do produto.** Hoje o repositório se chama "incorporadora" e o app aparece como "Apresentação 3D". ⭐ manter o nome provisório "Incorporadora 3D" até você escolher · Ajustar: ___
 
-**D07 — Orientação do terreno.** Medi pela foto de satélite que a Rua Ceará corre a ~110°. ⭐ Conferir com a planta de situação do projeto (norte verdadeiro) — muda a projeção solar.
+**D13 — Repositório público.** O repositório é **público**: qualquer pessoa vê o código e a pasta do Projeto 1 (folder, renders e plantas do Missouri). Dados de clientes **nunca** vão para lá. ⭐ (a) tornar o repositório **privado** e publicar só o necessário (exige GitHub pago para Pages em repositório privado, ou publicar em outro serviço) · (b) manter público, mas deixar os projetos específicos num repositório privado separado · (c) manter como está · Ajustar: ___
 
-**D08 — Detalhes das tipologias.** O folder não informa nº exato de banheiros/lavabos nem medidas de todos os cômodos. ⭐ Me enviar o memorial descritivo e as plantas em PDF/DWG com cotas para o tour ficar fiel.
-
-**D09 — Fase online (link + celular + vários corretores).** ⭐ (a) Supabase (banco gratuito até certo uso, login por e-mail, dados em tempo real) · (b) Firebase · (c) servidor próprio. Decidir quando chegarmos na Fase 4.
-
-**D10 — Domínio.** ⭐ GitHub Pages grátis agora (link `victortlacerda.github.io/incorporadora`) · domínio próprio depois (ex.: missouri.costalacerda.com.br). Observação: o repositório é **público**; o arquivo publicado não contém dados de clientes (eles ficam no navegador), mas o código e as imagens do folder ficam visíveis.
-
-## 5. Fases do projeto
+## 5. Fases da plataforma
 
 ### Fase 0 — Planejamento ✅
-- [x] Ler folder, plantas, localização e skills anteriores
-- [x] Definir arquitetura, modelo de dados, decisões e perguntas
-- [x] Roadmap (este arquivo)
+### Fase 1 — Protótipo funcional ✅ (entregue com o Projeto 1)
+### Fase 1.1 — Generalização ✅ *nesta rodada*
+- [x] Projeto padrão genérico, sem marca
+- [x] Projeto 1 em pasta própria com roadmap próprio
+- [x] Particularidades do Projeto 1 transformadas em dados
+- [x] Montagem de todos os projetos com um comando; testes para todos os projetos
+- [x] README, descrição do GitHub, CLAUDE.md e skill genéricos
+- [ ] Você abrir `dist/padrao-apresentacao-3d.html` e conferir que nada lembra uma incorporadora específica
 
-### Fase 1 — Protótipo funcional (v0.1) ✅ *entregue nesta rodada*
-- [x] Maquete 3D procedural com materiais PBR (revestimento claro/grafite, ripado de madeira, vidros, guarda-corpos, faixas de madeira nas varandas, marquise com letreiro "MISSOURI Residencial", LEDs, portão, aquecedor solar no telhado)
-- [x] Implantação com orientação real; ruas, calçadas, faixas, nomes de ruas, postes, árvores, carros, vizinhos, morros no horizonte
-- [x] Céu físico com nuvens, sol real (data/hora), sombras, reflexos do céu, neblina; noite com estrelas, postes, janelas acesas e brilho (bloom)
-- [x] Trajetória do sol, rosa dos ventos, animação do dia, horas de sol por fachada
-- [x] Câmera: órbita, drone automático, vistas (geral, Rua Ceará, Rua Bahia, aérea, bairro), voo até a unidade, corte por pavimento, bússola
-- [x] Clique na unidade (volumes clicáveis), destaque, rótulos, modo disponibilidade
-- [x] Tour virtual guiado (todas as tipologias, incluindo 2º piso das coberturas)
-- [x] Modo cliente / gerente (PIN), CRM, espelho de vendas, alertas, configurações
-- [x] Relatórios PDF / Word / Excel; backup .json
-- [x] Layout de celular; PWA preparado; testes automáticos; arquivo único
-- [ ] **Teste de campo com você** (abrir no computador do plantão, testar desempenho, ver se a maquete "parece" o Missouri)
-
-### Fase 2 — Fidelidade ao projeto (depende de D01, D02, D06, D07, D08)
-- [ ] Carregar modelo 3D do arquiteto (.glb) para fachada e/ou interiores
-- [ ] Ajustar fachada (cores/ritmo de janelas) comparando com o render da fachada
-- [ ] Plantas com cotas exatas → ambientes do tour 1:1
-- [ ] Hall de entrada e hall decorado no tour (renders existentes)
-- [ ] Fotos 360° por cômodo (se D02-a)
-- [ ] Importar tabela de preços oficial (Excel) e vagas
-- [ ] Opção de qualidade gráfica automática conforme o computador (medir fps real)
+### Fase 2 — Fidelidade e realismo
+- [ ] Carregar modelo `.glb` do arquiteto (D11)
+- [ ] Fotos 360° por cômodo no tour
+- [ ] Importar tabela de preços e vagas por planilha Excel
+- [ ] Qualidade gráfica automática conforme o computador (medir fps real)
 
 ### Fase 3 — Vendas no dia a dia
 - [ ] Proposta em PDF para o cliente (unidade, imagem da maquete, condições, simulação)
 - [ ] Simulador de pagamento (entrada, mensais, intercaladas, chaves, financiamento)
-- [ ] Histórico de preços e tabela por período (reajuste INCC)
+- [ ] Histórico de preços e reajuste (INCC)
 - [ ] Comissão por corretor e metas
 - [ ] Agenda de visitas e lembretes
-- [ ] Importar clientes de planilha (CSV/Excel)
-- [ ] Comparar 2–3 unidades lado a lado
-- [ ] Manual do usuário (documento editável) — escrever após a interface estabilizar
+- [ ] Importar clientes de planilha
+- [ ] Comparar 2–3 unidades
+- [ ] Manual do usuário (documento editável), depois da interface estabilizar
 
-### Fase 4 — Online, link e celular (depende de D09, D10)
-- [ ] Publicar no GitHub Pages (link) — já preparado (`dist/pages`)
-- [ ] Banco de dados online + login (gerente, corretor, cliente)
-- [ ] Vários corretores ao mesmo tempo, permissões
-- [ ] Link de apresentação para o cliente (somente visualização, sem dados internos)
-- [ ] "Tenho interesse" pelo cliente → entra no CRM
-- [ ] Entorno real (Google 3D Tiles) se D03-a
+### Fase 4 — Online, link e celular (D09, D10, D13)
+- [ ] Publicar (GitHub Pages ou outro) — já preparado
+- [ ] Banco online + login (gerente, corretor, cliente) e vários corretores
+- [ ] Link de apresentação somente leitura para o cliente
+- [ ] "Tenho interesse" → CRM
+- [ ] Entorno real (D03)
 
-### Fase 5 — Plataforma para outras incorporadoras
-- [ ] Assistente "novo empreendimento": a partir de PDF do folder + identidade visual → `empreendimento.json` (com revisão)
-- [ ] Editor visual de plantas/volumes (arrastar retângulos sobre a planta)
-- [ ] Vários empreendimentos no mesmo sistema (portfólio da incorporadora)
+### Fase 5 — Escala para várias incorporadoras
+- [ ] Assistente "novo projeto específico": folder PDF + identidade → `empreendimento.json` revisável
+- [ ] Editor visual de volumes/ambientes sobre a planta
+- [ ] Vários empreendimentos no mesmo sistema (portfólio)
 - [ ] Temas visuais por incorporadora
 
 ## 6. Banco de ideias (nada se perde)
 
-**Suas ideias:** luz acesa = disponível (feito) · tour como visita guiada (feito) · modo gerente/cliente (feito).
-
-**Minhas sugestões:**
-- Vista real da janela de cada unidade (feito no tour: as janelas mostram a cidade na altura certa)
-- Horas de sol por fachada como argumento de venda (feito)
-- "Vista do apartamento" a 360° sem entrar no tour (câmera na varanda)
-- Simulação de sombra dos prédios vizinhos nas unidades (precisa de entorno real)
-- QR code no folder/estande abrindo direto a unidade no celular
-- Vídeo automático (gravação do voo de drone) para Instagram/WhatsApp
-- Comparador de unidades e "unidades parecidas disponíveis" quando a escolhida está vendida
-- Mapa de calor de interesse (quais unidades mais clicadas / mais visitadas no tour)
-- Integração com WhatsApp (mensagem pronta com link da unidade)
-- Assinatura eletrônica da proposta (fase online)
-- Personalização de acabamentos no tour (piso, marcenaria) para coberturas
-- Mostrar pontos de interesse do bairro (comércio, escolas, hospitais) com distâncias
-- Modo "TV do plantão" com carrossel de unidades disponíveis e avisos
-- Narração em áudio do tour (gravada pelo corretor)
-- Realidade aumentada no celular (maquete sobre a mesa)
-
-## 6.1 O que foi verificado nesta rodada (e o que não)
-
-- ✅ 13 testes automáticos das regras (funil, reservas, PIN, backup, sol, relatório, validação do empreendimento).
-- ✅ Arquivo único aberto por `file://` num Chrome sem tela: abertura, vista geral, foco na unidade, rua, noite, espelho, disponibilidade, corte por pavimento, bairro, tour (apto 502 e Cobertura 1, incluindo 2º piso), modo gerente, CRM, relatórios PDF/Word/Excel baixados e conferidos, backup exportado, layout de celular (390×844).
-- ⚠️ **Não verificado:** fluidez (fps) no computador do plantão — o teste roda com placa de vídeo simulada, muito mais lenta que um PC real. Se ficar pesado, a qualidade pode ser reduzida (opção prevista).
-- ⚠️ Medidas dos cômodos do tour e ritmo das janelas da fachada são aproximados (folder sem cotas completas).
+- Vista 360° da varanda sem entrar no tour
+- Sombra dos prédios vizinhos nas unidades (com entorno real)
+- QR code no folder/estande abrindo direto a unidade
+- Vídeo automático do voo de drone para redes sociais
+- "Unidades parecidas disponíveis" quando a escolhida está vendida
+- Mapa de calor de interesse (unidades mais clicadas/visitadas)
+- Mensagem pronta de WhatsApp com a unidade
+- Assinatura eletrônica da proposta
+- Personalização de acabamentos no tour
+- Pontos de interesse do bairro com distâncias
+- Modo "TV do plantão" com carrossel de disponíveis
+- Narração em áudio do tour
+- Realidade aumentada (maquete sobre a mesa)
+- Gerar o projeto padrão em variações (torre única, duas torres, casas em condomínio) para demonstrações a novos clientes
 
 ## 7. Riscos e cuidados
 
 | Risco | Cuidado |
 |---|---|
-| Computador do plantão fraco → 3D lento | Qualidade automática (alta/média/baixa); medir no computador real (não dá para medir aqui) |
-| Dados só no navegador → perda ao limpar o Chrome | Aviso de backup a cada 7 dias; exportar .json; fase online resolve |
-| Dados ficam por endereço: arquivo em outra pasta/computador/link começa vazio | Use o backup .json para levar os dados (dito na tela Dados) |
-| Maquete gerada pode divergir do projeto real | Aviso "imagens ilustrativas / medidas aproximadas"; D01/D08 |
-| Backups contêm dados pessoais (LGPD) | Não enviar backups ao GitHub; guardar em local seguro |
-| Repositório público | Não versionar backups nem dados reais de clientes |
+| Computador do plantão fraco | Qualidade alta/média/baixa; medir no computador real |
+| Dados só no navegador | Aviso de backup; exportar .json; fase online resolve |
+| Outro computador/navegador/link começa vazio | Levar os dados pelo backup |
+| Maquete gerada diverge do projeto real | Avisos "ilustrativo/aproximado"; D11 |
+| Backups com dados pessoais (LGPD) | Nunca no GitHub; guardar em local seguro |
+| Repositório público com material de clientes | D13 |
+| Código ganhar "jeitinhos" de um projeto específico | Regra D-A15 + teste que procura nomes de projetos no padrão |
 
-## 8. O que depende de você (teste de campo)
+## 8. Verificado nesta rodada (e o que não)
 
-1. Abrir `dist/missouri-apresentacao-3d.html` (ou o arquivo baixado) no **Google Chrome** do computador de apresentação.
-2. Testar: Iniciar apresentação → girar/zoom → Drone → clicar num apartamento → Tour virtual → Noite → Disponibilidade → Espelho.
-3. Criar o PIN (Entrar como gerente) → ver Clientes, Relatórios (baixar PDF/Word/Excel) → Dados → Exportar backup.
-4. Dizer: está fluido? A fachada lembra o Missouri? O que não gostou? Responder D01–D10.
+- ✅ 15 testes automáticos (regras + validação de todos os projetos + projeto padrão sem marca).
+- ✅ Montagem dos dois arquivos (padrão 2,7 MB · Missouri 5,0 MB); busca no arquivo do padrão não encontrou "Missouri", "Lacerda", "Divinópolis" nem "Ceará".
+- ✅ Teste de tela do projeto padrão (abertura, vista geral, unidade, rua, noite, espelho, pavimento, bairro).
+- ⚠️ Fluidez (fps) só se mede no computador real.
 
-## 9. Log de decisões e versões
+## 9. Log
 
 | Data | Versão | O que aconteceu |
 |---|---|---|
-| 06/11/2026 | v1.0 | Projeto criado; Fases 0 e 1 entregues; decisões D-A1 a D-A12 tomadas; perguntas D01–D10 abertas |
+| 06/11/2026 | v1.0 | Plataforma criada junto com o Projeto 1 (Missouri); Fases 0 e 1 |
+| 06/11/2026 | v1.1 | Generalização: projeto padrão genérico, Missouri como Projeto específico 1 em pasta própria; D-A13 a D-A16; novas perguntas D11–D13; D01/D02 viraram D11 na plataforma |
