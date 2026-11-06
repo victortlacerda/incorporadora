@@ -1,0 +1,8 @@
+node_modules/
+tmp-telas/
+*.log
+# backups e dados de clientes NUNCA vão para o repositório
+backup-*.json
+**/backup*.json
+dist/index.html
+dist/pages/

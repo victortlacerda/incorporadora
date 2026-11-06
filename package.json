@@ -1,0 +1,37 @@
+{
+  "name": "incorporadora-3d",
+  "version": "0.1.0",
+  "description": "Sistema de vendas 3D para incorporadoras (CRM + maquete interativa)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/pos-build.mjs",
+    "test": "node --test tests/*.test.ts",
+    "check": "tsc --noEmit -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victortlacerda/incorporadora.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/victortlacerda/incorporadora/issues"
+  },
+  "homepage": "https://github.com/victortlacerda/incorporadora#readme",
+  "dependencies": {
+    "docx": "^9.15.2",
+    "exceljs": "^4.4.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.9",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/three": "^0.187.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vite-plugin-singlefile": "^2.3.4"
+  },
+  "type": "module",
+  "private": true
+}
