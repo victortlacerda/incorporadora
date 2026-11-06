@@ -67,3 +67,11 @@ A seção "Novos aprendizados" nasceu do **Projeto específico 1 (Missouri Resid
 4. Manter vizinhos baixos perto do terreno, ou o prédio do cliente perde protagonismo.
 5. Em teste headless, tudo que anima deve usar relógio real, não número de quadros.
 - A descrição e os tópicos do repositório não podem ser alterados pelo Claude (o acesso ao GitHub desta sessão não permite mudar configurações): o usuário altera em Settings → General.
+
+## Aprendizados da vitrine (v1.2)
+- Prints do README sempre do **projeto padrão** (nunca de projeto específico), gerados por script para poderem ser refeitos a cada versão.
+- Posicionar a câmera direto (`camera.position` + `controls.target`) nas capturas; `drone(false)` também cancela voos em andamento.
+- Manter o modo apresentação "acordado" durante capturas longas (senão o drone automático liga depois de 2 min).
+- Linhas do WebGL têm 1 px e somem em fotos: trajetória do sol virou tubo.
+- GIF: 36 quadros, 560 px, 96 cores com pontilhado *bayer* ≈ 2,5 MB; acima disso o README fica lento.
+- Escolher unidades **disponíveis** nas fotos de venda (mostram preço e botão de tour) e enquadramentos onde vizinhos não escondem o prédio.

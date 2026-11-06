@@ -118,16 +118,17 @@ export function criarCeu(scene: THREE.Scene, renderer: THREE.WebGLRenderer, emp:
         pts.push(new THREE.Vector3(x, y, z).multiplyScalar(raio).add(c));
       }
       if (pts.length > 1) {
-        const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineDashedMaterial({ color: '#ffcc55', dashSize: 2, gapSize: 1.2, fog: false }));
-        l.computeLineDistances();
-        trilha.add(l);
+        // tubo (linhas do WebGL têm sempre 1 px e somem de longe)
+        const curva = new THREE.CatmullRomCurve3(pts);
+        const tubo = new THREE.Mesh(new THREE.TubeGeometry(curva, 160, 0.45, 8, false), new THREE.MeshBasicMaterial({ color: '#ffc845', fog: false, transparent: true, opacity: 0.9 }));
+        trilha.add(tubo);
       }
       for (let h = 6; h <= 18; h += 2) {
         const p = posicaoSol(instanteLocal(dataISO, h, emp.geo.fusoHoras), emp.geo.lat, emp.geo.lon);
         if (p.elevacao < 0) continue;
         const [x, y, z] = direcaoSolPlanta(p, emp.geo.azimuteTopoPlanta);
         const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: texTexto(`${h}h`, '#ffcc55', 'rgba(0,0,0,0.55)', 256), fog: false, depthTest: false }));
-        s.scale.set(6, 3, 1);
+        s.scale.set(9, 4.5, 1);
         s.position.set(x, y, z).multiplyScalar(raio).add(c);
         trilha.add(s);
       }

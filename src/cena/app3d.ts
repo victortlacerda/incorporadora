@@ -251,7 +251,7 @@ export function criarApp3D(o: Opcoes3D): App3D {
     if (acumuladoEnv > 0.25) { acumuladoEnv = 0; ceu.atualizarAmbiente(); }
     bloom.enabled = !tour && q !== 'baixa' && ceu.noite > 0.05;
     if (tour) renderer.toneMappingExposure = 0.55;
-    bloom.strength = 0.6 * ceu.noite;
+    bloom.strength = 0.42 * ceu.noite;
     atualizarRotulos();
     composer.render(dt);
   }

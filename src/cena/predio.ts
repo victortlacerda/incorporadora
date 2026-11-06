@@ -372,7 +372,7 @@ export function criarPredio(emp: Empreendimento): PredioCena {
         const s = status[id] ?? 'disponivel';
         const v = uc.vidro;
         // À noite: disponível = luz acesa; reservado/negociação = meia-luz; vendido/indisponível = apagada.
-        const intensidade = s === 'disponivel' ? 1.6 : s === 'negociacao' || s === 'reservado' ? 0.45 : 0;
+        const intensidade = s === 'disponivel' ? 1.25 : s === 'negociacao' || s === 'reservado' ? 0.45 : 0;
         v.emissive.set(s === 'disponivel' ? '#ffcf8a' : '#ffb05c');
         v.emissiveIntensity = intensidade * noite;
       }

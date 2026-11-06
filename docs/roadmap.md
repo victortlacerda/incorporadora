@@ -1,6 +1,6 @@
 # Roadmap da plataforma — Apresentação 3D e CRM de vendas para incorporadoras
 
-**Versão:** v1.1 · **Data:** 06/11/2026
+**Versão:** v1.2 · **Data:** 06/11/2026
 
 > Este arquivo é o "contrato" da **plataforma genérica** (o produto). Cada projeto específico tem o seu próprio roadmap em `projetos-especificos/<NN>-<id>/roadmap.md`.
 > **Nenhuma ideia se perde:** todo pedido entra aqui (pedido, decisão, banco de ideias) e é atualizado a cada rodada.
@@ -8,7 +8,14 @@
 
 ---
 
-## O que mudou nesta rodada (v1.1 — generalização)
+## O que mudou nesta rodada (v1.2 — vitrine no GitHub)
+
+- README reescrito como **vitrine da plataforma**: GIF do voo de drone, 20 imagens (maquete de dia e de noite, unidade, espelho, corte por pavimento, projeção solar, bairro, tour, CRM, relatórios, celular), destaques, lista completa de funcionalidades, diagrama de como funciona e "comece agora".
+- Todas as imagens são do **projeto padrão** (sem marca) e ficam em `docs/imagens/`; são refeitas com `node scripts/capturas-readme.mjs <pasta> todos` + `python3 scripts/montar-imagens-readme.py <pasta>`.
+- Trajetória do sol agora é um "tubo" visível de longe (antes era uma linha fina) e o brilho noturno ficou mais suave.
+
+## Rodada anterior (v1.1 — generalização)
+
 
 - O sistema virou uma **plataforma genérica**: o app, o repositório, o README e a descrição no GitHub não citam mais nenhuma incorporadora, logo ou identidade visual.
 - Criado o **projeto padrão** (`projeto-padrao/`): empreendimento de demonstração "Modelo Residencial", sem logo, com cores neutras, endereço e localização de exemplo. A volumetria e as plantas vieram do primeiro projeto (24 unidades, 8 tipologias, coberturas duplex), sem nenhuma imagem ou texto dele.
@@ -64,6 +71,7 @@
 | P16 | Roadmap com fases, decisões, ideias, atualizado passo a passo | [x] este arquivo + roadmap por projeto |
 | P17 | Projeto no GitHub (victortlacerda/incorporadora) | [x] |
 | P18 | Aproveitar skills anteriores (arena, showroom) e img2threejs | [x] ver `docs/aprendizados.md` |
+| P20 | Deixar o GitHub mais apresentável, com prints e funcionalidades da plataforma | [x] v1.2 |
 | P19 | **Versão genérica** sem nome de incorporadora, logo ou identidade visual; Missouri como Projeto específico 1 em pasta separada; app, GitHub e descrição genéricos | [x] v1.1 |
 
 ## 4. Decisões
@@ -99,6 +107,8 @@
 **D10 — Publicação.** ⭐ GitHub Pages grátis: o projeto padrão no endereço principal e cada projeto específico numa subpasta (`…/missouri/`) · domínio próprio depois. A publicação está **preparada mas desligada**.
 
 **D11 — Realismo com modelo 3D do arquiteto (recurso da plataforma).** ⭐ a plataforma passa a aceitar um `.glb` por projeto (fachada e/ou interiores) no lugar do prédio gerado, mantendo clique, status e tour · seguir só com geração por código · Ajustar: ___ *(antes D01/D02 do Missouri; as perguntas sobre o arquivo do Missouri continuam no roadmap dele)*
+
+**D14 — Apresentação do repositório.** A descrição, os tópicos e a imagem de prévia (aparece quando o link é compartilhado no WhatsApp) só podem ser alterados por você em *Settings*. ⭐ usar a descrição e os tópicos sugeridos e a imagem `docs/imagens/maquete-dia.jpg` como prévia · Ajustar: ___
 
 **D12 — Nome do produto.** Hoje o repositório se chama "incorporadora" e o app aparece como "Apresentação 3D". ⭐ manter o nome provisório "Incorporadora 3D" até você escolher · Ajustar: ___
 
@@ -186,4 +196,5 @@
 | Data | Versão | O que aconteceu |
 |---|---|---|
 | 06/11/2026 | v1.0 | Plataforma criada junto com o Projeto 1 (Missouri); Fases 0 e 1 |
+| 06/11/2026 | v1.2 | README vitrine com GIF e prints do projeto padrão; trajetória do sol mais visível; brilho noturno suavizado |
 | 06/11/2026 | v1.1 | Generalização: projeto padrão genérico, Missouri como Projeto específico 1 em pasta própria; D-A13 a D-A16; novas perguntas D11–D13; D01/D02 viraram D11 na plataforma |

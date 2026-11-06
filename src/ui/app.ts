@@ -728,7 +728,7 @@ export function iniciarUI(emp: Empreendimento) {
   });
 
   window.addEventListener('keydown', (e) => {
-    if ((e.target as HTMLElement).closest('input,textarea,select') || app3d?.tourAtivo()) return;
+    if ((e.target as HTMLElement)?.closest?.('input,textarea,select') || app3d?.tourAtivo()) return;
     const k = e.key.toLowerCase();
     if (k === 'f') telaCheia();
     else if (k === 'd') { droneOn = !droneOn; app3d.drone(droneOn); marcarDock(); }

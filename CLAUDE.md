@@ -8,5 +8,5 @@
 - Decida o que tem padrão sensato, registre e avise; pergunte só o que muda o resultado (regra de negócio, dinheiro, privacidade), em rodadas de 3–5 perguntas com ⭐.
 - Regras de negócio só em `src/core` (funções puras, `{ok, erro}` em português) com teste em `tests/`. A tela só chama.
 - Antes de entregar: `npm test`, `npm run build:todos`, `EMP=<id> node scripts/teste-visual.mjs <pasta> basico|tour|gerente|celular` **em segundo plano** e olhar as fotos.
-- Entregar: `dist/<id>-apresentacao-3d.html`, roadmaps atualizados e commit no GitHub.
+- Entregar: `dist/<id>-apresentacao-3d.html`, roadmaps atualizados e commit no GitHub. Se a interface mudar visivelmente, refaça as imagens do README (`scripts/capturas-readme.mjs` + `scripts/montar-imagens-readme.py`), sempre do projeto padrão.
 - Nunca versionar backups `.json` (dados de clientes). O repositório é público.
