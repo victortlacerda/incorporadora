@@ -104,7 +104,7 @@
 
 **D09 — Fase online (link + celular + vários corretores).** ⭐ (a) Supabase · (b) Firebase · (c) servidor próprio. Decidir na Fase 4.
 
-**D10 — Publicação.** ⭐ GitHub Pages grátis: o projeto padrão no endereço principal e cada projeto específico numa subpasta (`…/missouri/`) · domínio próprio depois. A publicação está **preparada mas desligada**.
+**D10 — Publicação.** ⭐ GitHub Pages grátis: o projeto padrão no endereço principal e cada projeto específico numa subpasta (`…/missouri/`) · domínio próprio depois. A publicação **está ligada**: cada envio na `main` publica sozinho (GitHub Actions; em Settings → Pages a origem deve ser "GitHub Actions").
 
 **D11 — Realismo com modelo 3D do arquiteto (recurso da plataforma).** ⭐ a plataforma passa a aceitar um `.glb` por projeto (fachada e/ou interiores) no lugar do prédio gerado, mantendo clique, status e tour · seguir só com geração por código · Ajustar: ___ *(antes D01/D02 do Missouri; as perguntas sobre o arquivo do Missouri continuam no roadmap dele)*
 
@@ -143,7 +143,7 @@
 - [ ] Manual do usuário (documento editável), depois da interface estabilizar
 
 ### Fase 4 — Online, link e celular (D09, D10, D13)
-- [ ] Publicar (GitHub Pages ou outro) — já preparado
+- [x] Publicar no GitHub Pages — automático a cada envio na `main` (09/11/2026)
 - [ ] Banco online + login (gerente, corretor, cliente) e vários corretores
 - [ ] Link de apresentação somente leitura para o cliente
 - [ ] "Tenho interesse" → CRM
@@ -197,4 +197,5 @@
 |---|---|---|
 | 06/11/2026 | v1.0 | Plataforma criada junto com o Projeto 1 (Missouri); Fases 0 e 1 |
 | 06/11/2026 | v1.2 | README vitrine com GIF e prints do projeto padrão; trajetória do sol mais visível; brilho noturno suavizado |
+| 09/11/2026 | v1.2 | GitHub Pages ligado: o workflow publica sozinho a cada envio na `main` (D10) |
 | 06/11/2026 | v1.1 | Generalização: projeto padrão genérico, Missouri como Projeto específico 1 em pasta própria; D-A13 a D-A16; novas perguntas D11–D13; D01/D02 viraram D11 na plataforma |

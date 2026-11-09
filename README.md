@@ -242,7 +242,7 @@ docs/                       roadmap, aprendizados, passo a passo, imagens do REA
 - **App:** TypeScript + Vite + `vite-plugin-singlefile` (tudo num `.html`), sem framework de interface
 - **Relatórios:** jsPDF + AutoTable, docx, ExcelJS — gerados no próprio navegador
 - **Testes:** `node --test` nas regras e nos dados de todos os projetos; testes de tela com Playwright
-- **Publicação:** PWA e workflow de GitHub Pages prontos (desligados até a decisão de publicar)
+- **Publicação:** PWA pronto e GitHub Pages publicado automaticamente a cada envio na `main`
 </details>
 
 ## Privacidade
